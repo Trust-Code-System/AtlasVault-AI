@@ -10,15 +10,15 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   ]);
 
   return (
-    <div className="min-h-screen">
+    <div className="spatial-shell min-h-screen overflow-x-hidden bg-[#050506] text-slate-100">
       <Sidebar
         workspaceName={workspace?.name ?? "Workspace"}
         userName={session.name}
         role={session.role}
         isPlatformAdmin={user?.isPlatformAdmin}
       />
-      <main className="min-h-screen px-4 pb-8 pt-16 sm:px-8 lg:ml-60 lg:pt-7">
-        <div className="mx-auto max-w-6xl">{children}</div>
+      <main className="relative z-10 min-h-screen px-4 pb-12 pt-24 sm:px-8 lg:ml-28 lg:pt-32">
+        <div className="mx-auto max-w-7xl">{children}</div>
       </main>
     </div>
   );

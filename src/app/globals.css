@@ -7,7 +7,7 @@
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 antialiased;
+  @apply bg-[#050506] text-slate-100 antialiased;
 }
 
 /* prose defaults for rendered markdown */
@@ -28,3 +28,68 @@ body {
 .md-body strong { @apply font-semibold text-slate-900; }
 .md-body a { @apply text-brand-600 underline underline-offset-2; }
 .md-body em { @apply text-slate-500; }
+
+.spatial-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 28%, rgba(0, 180, 216, 0.13), transparent 25%),
+    radial-gradient(circle at 88% 18%, rgba(88, 86, 214, 0.14), transparent 26%),
+    linear-gradient(135deg, #050506 0%, #0f1012 46%, #050506 100%);
+  background-attachment: fixed;
+}
+
+.spatial-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 75%);
+}
+
+.spatial-shell .text-slate-900,
+.spatial-shell .text-slate-800,
+.spatial-shell .text-slate-700 {
+  color: rgb(241 245 249 / 0.94);
+}
+
+.spatial-shell .text-slate-600 {
+  color: rgb(203 213 225 / 0.86);
+}
+
+.spatial-shell .text-slate-500,
+.spatial-shell .text-slate-400 {
+  color: rgb(148 163 184 / 0.92);
+}
+
+.spatial-shell .bg-white {
+  background-color: rgb(21 21 24 / 0.68);
+  backdrop-filter: blur(24px);
+}
+
+.spatial-shell .bg-slate-50,
+.spatial-shell .bg-slate-100 {
+  background-color: rgb(255 255 255 / 0.06);
+}
+
+.spatial-shell .border-slate-50,
+.spatial-shell .border-slate-100,
+.spatial-shell .border-slate-200,
+.spatial-shell .divide-slate-50 > :not([hidden]) ~ :not([hidden]),
+.spatial-shell .divide-slate-100 > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgb(255 255 255 / 0.1);
+}
+
+.spatial-shell .hover\:bg-slate-50:hover,
+.spatial-shell .hover\:bg-slate-50\/50:hover {
+  background-color: rgb(255 255 255 / 0.06);
+}
+
+.spatial-shell input,
+.spatial-shell textarea,
+.spatial-shell select {
+  color: rgb(248 250 252);
+}

@@ -1,15 +1,24 @@
 import { cn } from "@/lib/utils";
 
 export function Card({ className, children }: { className?: string; children: React.ReactNode }) {
-  return <div className={cn("rounded-xl border border-slate-200 bg-white shadow-card", className)}>{children}</div>;
+  return (
+    <div
+      className={cn(
+        "rounded-3xl border border-white/10 bg-[#151518]/[0.68] shadow-[0_18px_54px_rgba(0,0,0,0.28)] backdrop-blur-2xl",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
 }
 
 export function CardHeader({ title, subtitle, action }: { title: string; subtitle?: string; action?: React.ReactNode }) {
   return (
-    <div className="flex items-start justify-between gap-4 border-b border-slate-100 px-5 py-4">
+    <div className="flex items-start justify-between gap-4 border-b border-white/10 px-5 py-4">
       <div>
-        <h3 className="text-sm font-semibold text-slate-900">{title}</h3>
-        {subtitle && <p className="mt-0.5 text-xs text-slate-500">{subtitle}</p>}
+        <h3 className="text-sm font-semibold text-white">{title}</h3>
+        {subtitle && <p className="mt-0.5 text-xs text-slate-400">{subtitle}</p>}
       </div>
       {action}
     </div>
@@ -20,8 +29,8 @@ export function PageHeader({ title, subtitle, action }: { title: string; subtitl
   return (
     <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-slate-900">{title}</h1>
-        {subtitle && <p className="mt-1 max-w-2xl text-sm text-slate-500">{subtitle}</p>}
+        <h1 className="text-3xl font-bold tracking-tight text-white">{title}</h1>
+        {subtitle && <p className="mt-2 max-w-2xl text-sm text-slate-400">{subtitle}</p>}
       </div>
       {action && <div className="flex items-center gap-2">{action}</div>}
     </div>
@@ -30,12 +39,12 @@ export function PageHeader({ title, subtitle, action }: { title: string; subtitl
 
 type BadgeTone = "slate" | "green" | "amber" | "red" | "blue" | "violet";
 const badgeTones: Record<BadgeTone, string> = {
-  slate: "bg-slate-100 text-slate-600 ring-slate-200",
-  green: "bg-emerald-50 text-emerald-700 ring-emerald-200",
-  amber: "bg-amber-50 text-amber-700 ring-amber-200",
-  red: "bg-red-50 text-red-700 ring-red-200",
-  blue: "bg-brand-50 text-brand-700 ring-brand-200",
-  violet: "bg-violet-50 text-violet-700 ring-violet-200",
+  slate: "bg-white/[0.07] text-slate-300 ring-white/10",
+  green: "bg-emerald-400/[0.12] text-emerald-200 ring-emerald-300/25",
+  amber: "bg-amber-400/[0.12] text-amber-200 ring-amber-300/25",
+  red: "bg-rose-400/[0.12] text-rose-200 ring-rose-300/25",
+  blue: "bg-cyan-300/[0.14] text-cyan-100 ring-cyan-300/25",
+  violet: "bg-violet-400/[0.14] text-violet-100 ring-violet-300/25",
 };
 
 export function Badge({ tone = "slate", children, className }: { tone?: BadgeTone; children: React.ReactNode; className?: string }) {
@@ -79,10 +88,10 @@ export function ConfidenceBadge({ level }: { level: string }) {
 
 export function EmptyState({ icon, title, body, action }: { icon?: React.ReactNode; title: string; body?: string; action?: React.ReactNode }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-200 bg-white px-6 py-14 text-center">
-      {icon && <div className="mb-3 text-slate-300">{icon}</div>}
-      <h3 className="text-sm font-semibold text-slate-900">{title}</h3>
-      {body && <p className="mt-1 max-w-md text-sm text-slate-500">{body}</p>}
+    <div className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-white/15 bg-white/[0.04] px-6 py-14 text-center">
+      {icon && <div className="mb-3 text-slate-500">{icon}</div>}
+      <h3 className="text-sm font-semibold text-white">{title}</h3>
+      {body && <p className="mt-1 max-w-md text-sm text-slate-400">{body}</p>}
       {action && <div className="mt-4">{action}</div>}
     </div>
   );
@@ -90,12 +99,12 @@ export function EmptyState({ icon, title, body, action }: { icon?: React.ReactNo
 
 export function Stat({ label, value, hint, tone }: { label: string; value: React.ReactNode; hint?: string; tone?: "default" | "warn" | "danger" | "good" }) {
   const valueColor =
-    tone === "danger" ? "text-red-600" : tone === "warn" ? "text-amber-600" : tone === "good" ? "text-emerald-600" : "text-slate-900";
+    tone === "danger" ? "text-rose-300" : tone === "warn" ? "text-amber-300" : tone === "good" ? "text-emerald-300" : "text-white";
   return (
     <Card className="px-5 py-4">
-      <p className="text-xs font-medium uppercase tracking-wide text-slate-400">{label}</p>
+      <p className="text-xs font-semibold uppercase tracking-[0.08em] text-cyan-100/[0.55]">{label}</p>
       <p className={cn("mt-1 text-2xl font-semibold tracking-tight", valueColor)}>{value}</p>
-      {hint && <p className="mt-1 text-xs text-slate-500">{hint}</p>}
+      {hint && <p className="mt-1 text-xs text-slate-400">{hint}</p>}
     </Card>
   );
 }
@@ -103,16 +112,16 @@ export function Stat({ label, value, hint, tone }: { label: string; value: React
 export function ScoreRing({ score, size = 96 }: { score: number; size?: number }) {
   const r = (size - 10) / 2;
   const c = 2 * Math.PI * r;
-  const color = score >= 80 ? "#059669" : score >= 60 ? "#d97706" : "#dc2626";
+  const color = score >= 80 ? "#34d399" : score >= 60 ? "#fbbf24" : "#fb7185";
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="shrink-0">
-      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#e2e8f0" strokeWidth="8" />
+      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="8" />
       <circle
         cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth="8"
         strokeLinecap="round" strokeDasharray={`${(score / 100) * c} ${c}`}
         transform={`rotate(-90 ${size / 2} ${size / 2})`}
       />
-      <text x="50%" y="50%" dominantBaseline="central" textAnchor="middle" className="fill-slate-900" fontSize={size / 4.2} fontWeight={600}>
+      <text x="50%" y="50%" dominantBaseline="central" textAnchor="middle" className="fill-white" fontSize={size / 4.2} fontWeight={700}>
         {score}
       </text>
     </svg>
