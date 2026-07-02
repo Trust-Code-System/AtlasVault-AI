@@ -1,0 +1,408 @@
+// AtlasVault AI — core schema
+// SQLite for local dev; the schema is written to be portable to PostgreSQL
+// (switch provider + DATABASE_URL, add pgvector for DocumentChunk.embedding).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String       @id @default(cuid())
+  email           String       @unique
+  passwordHash    String
+  name            String
+  isPlatformAdmin Boolean      @default(false)
+  createdAt       DateTime     @default(now())
+  memberships     Membership[]
+  sentInvites     TeamInvite[] @relation("inviteSender")
+  documents       Document[]   @relation("uploader")
+  proposals       Proposal[]
+  comments        Comment[]
+  tasks           Task[]
+  auditLogs       AuditLog[]
+  answers         Answer[]
+}
+
+model Organization {
+  id         String      @id @default(cuid())
+  name       String
+  industry   String?
+  website    String?
+  country    String?
+  // Brand kit — applied to exported documents (PDF/DOCX cover pages, headings)
+  brandColor String?
+  brandVoice String?
+  createdAt  DateTime    @default(now())
+  workspaces Workspace[]
+}
+
+model Workspace {
+  id            String         @id @default(cuid())
+  name          String
+  slug          String         @unique
+  organization  Organization   @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  orgId         String
+  // JSON: { learningEnabled, exportApprovalRequired, sensitiveWarnings, webResearchEnabled }
+  settings      String?
+  createdAt     DateTime       @default(now())
+  memberships   Membership[]
+  invites       TeamInvite[]
+  documents     Document[]
+  wikiPages     WikiPage[]
+  opportunities Opportunity[]
+  proposals     Proposal[]
+  evidenceItems EvidenceItem[]
+  citations     Citation[]
+  tasks         Task[]
+  comments      Comment[]
+  approvals     Approval[]
+  auditLogs     AuditLog[]
+  usageLogs     UsageLog[]
+  answers       Answer[]
+  feedbacks     Feedback[]
+  integrations  Integration[]
+  outputs       GeneratedOutput[]
+}
+
+// Roles: OWNER > ADMIN > MEMBER > VIEWER
+model Membership {
+  id          String    @id @default(cuid())
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  role        String    @default("MEMBER")
+  createdAt   DateTime  @default(now())
+
+  @@unique([userId, workspaceId])
+}
+
+// Team invitations are token-based. Store only a hash of the one-time token.
+// status: PENDING | ACCEPTED | REVOKED | EXPIRED
+model TeamInvite {
+  id          String    @id @default(cuid())
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  email       String
+  name        String
+  role        String
+  tokenHash   String    @unique
+  status      String    @default("PENDING")
+  invitedBy   User?     @relation("inviteSender", fields: [invitedById], references: [id])
+  invitedById String?
+  expiresAt   DateTime
+  acceptedAt  DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@index([workspaceId, email, status])
+}
+
+// Document.category: COMPANY_PROFILE | PROPOSAL | PROJECT_REPORT | STAFF_CV |
+//   CERTIFICATE | LEGAL | FINANCIAL | TECHNICAL | OPPORTUNITY | OTHER
+// Document.status: PROCESSING | PROCESSED | NEEDS_REVIEW | APPROVED | EXPIRED | ARCHIVED
+model Document {
+  id            String          @id @default(cuid())
+  workspace     Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId   String
+  uploader      User?           @relation("uploader", fields: [uploaderId], references: [id])
+  uploaderId    String?
+  title         String
+  fileName      String
+  filePath      String?
+  mimeType      String
+  sizeBytes     Int             @default(0)
+  category      String          @default("OTHER")
+  status        String          @default("PROCESSING")
+  confidential  Boolean         @default(false)
+  summary       String?
+  extractedText String?
+  language      String?
+  docDate       DateTime?
+  expiryDate    DateTime?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  chunks        DocumentChunk[]
+  citations     Citation[]
+  evidenceItems EvidenceItem[]
+  requirements  Requirement[]
+  opportunities Opportunity[]
+}
+
+model DocumentChunk {
+  id         String     @id @default(cuid())
+  document   Document   @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  documentId String
+  index      Int
+  content    String
+  // JSON-serialized embedding vector (pgvector column in production)
+  embedding  String?
+  citations  Citation[]
+}
+
+// WikiPage.type: COMPANY | SERVICES | PROJECTS | PEOPLE | CERTIFICATES | CLIENTS | KNOWLEDGE
+// WikiPage.status: AI_GENERATED | NEEDS_REVIEW | APPROVED
+model WikiPage {
+  id          String    @id @default(cuid())
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  slug        String
+  title       String
+  type        String    @default("KNOWLEDGE")
+  content     String
+  status      String    @default("AI_GENERATED")
+  confidence  String    @default("MEDIUM") // HIGH | MEDIUM | LOW
+  updatedAt   DateTime  @updatedAt
+  createdAt   DateTime  @default(now())
+
+  @@unique([workspaceId, slug])
+}
+
+// Citation.targetType: WIKI_PAGE | ANSWER | PROPOSAL_SECTION | REQUIREMENT | EVIDENCE
+model Citation {
+  id          String         @id @default(cuid())
+  workspace   Workspace      @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  document    Document       @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  documentId  String
+  chunk       DocumentChunk? @relation(fields: [chunkId], references: [id], onDelete: SetNull)
+  chunkId     String?
+  snippet     String
+  targetType  String
+  targetId    String
+  createdAt   DateTime       @default(now())
+
+  @@index([targetType, targetId])
+}
+
+// Opportunity.status: NEW | ANALYZING | IN_PROGRESS | READY_FOR_REVIEW | SUBMITTED | WON | LOST | ARCHIVED
+model Opportunity {
+  id              String        @id @default(cuid())
+  workspace       Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId     String
+  title           String
+  client          String?
+  deadline        DateTime?
+  value           String?
+  status          String        @default("NEW")
+  summary         String?
+  readinessScore  Int?
+  briefDocument   Document?     @relation(fields: [briefDocumentId], references: [id])
+  briefDocumentId String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  requirements    Requirement[]
+  proposals       Proposal[]
+}
+
+// Requirement.status: MET | PARTIAL | MISSING | UNKNOWN
+// Requirement.risk: LOW | MEDIUM | HIGH
+model Requirement {
+  id                 String      @id @default(cuid())
+  opportunity        Opportunity @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+  opportunityId      String
+  text               String
+  category           String      @default("GENERAL") // COMPLIANCE | EXPERIENCE | TEAM | FINANCIAL | TECHNICAL | GENERAL
+  mandatory          Boolean     @default(true)
+  status             String      @default("UNKNOWN")
+  risk               String      @default("MEDIUM")
+  note               String?
+  evidenceDocument   Document?   @relation(fields: [evidenceDocumentId], references: [id])
+  evidenceDocumentId String?
+  evidenceSnippet    String?
+}
+
+// Proposal.status: DRAFT | NEEDS_REVIEW | APPROVED | EXPORTED | ARCHIVED
+model Proposal {
+  id            String            @id @default(cuid())
+  workspace     Workspace         @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId   String
+  opportunity   Opportunity?      @relation(fields: [opportunityId], references: [id])
+  opportunityId String?
+  title         String
+  status        String            @default("DRAFT")
+  createdBy     User?             @relation(fields: [createdById], references: [id])
+  createdById   String?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  sections      ProposalSection[]
+  approvals     Approval[]
+}
+
+// ProposalSection.status: AI_GENERATED | EDITED | NEEDS_REVIEW | APPROVED
+model ProposalSection {
+  id         String   @id @default(cuid())
+  proposal   Proposal @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  proposalId String
+  index      Int
+  title      String
+  content    String
+  status     String   @default("AI_GENERATED")
+  confidence String   @default("MEDIUM")
+  missing    String?  // note about missing info for this section
+}
+
+// EvidenceItem.strength: STRONG | WEAK | EXPIRED | NEEDS_REVIEW
+model EvidenceItem {
+  id                  String    @id @default(cuid())
+  workspace           Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId         String
+  document            Document? @relation(fields: [documentId], references: [id], onDelete: SetNull)
+  documentId          String?
+  title               String
+  type                String    @default("OTHER") // PROJECT_PROOF | TESTIMONIAL | CERTIFICATE | CASE_STUDY | CV | FINANCIAL | OTHER
+  strength            String    @default("NEEDS_REVIEW")
+  confidential        Boolean   @default(false)
+  approvedForExternal Boolean   @default(false)
+  expiresAt           DateTime?
+  notes               String?
+  createdAt           DateTime  @default(now())
+}
+
+model Task {
+  id          String    @id @default(cuid())
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  title       String
+  status      String    @default("OPEN") // OPEN | DONE
+  assignee    User?     @relation(fields: [assigneeId], references: [id])
+  assigneeId  String?
+  relatedType String?
+  relatedId   String?
+  createdAt   DateTime  @default(now())
+}
+
+model Comment {
+  id          String    @id @default(cuid())
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  author      User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId    String
+  targetType  String
+  targetId    String
+  body        String
+  createdAt   DateTime  @default(now())
+
+  @@index([targetType, targetId])
+}
+
+// Approval.status: PENDING | APPROVED | REJECTED
+model Approval {
+  id            String    @id @default(cuid())
+  workspace     Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId   String
+  proposal      Proposal? @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  proposalId    String?
+  targetType    String
+  targetId      String
+  status        String    @default("PENDING")
+  requestedById String?
+  reviewerId    String?
+  note          String?
+  createdAt     DateTime  @default(now())
+  resolvedAt    DateTime?
+}
+
+model AuditLog {
+  id          String    @id @default(cuid())
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  user        User?     @relation(fields: [userId], references: [id])
+  userId      String?
+  action      String
+  targetType  String?
+  targetId    String?
+  detail      String?
+  createdAt   DateTime  @default(now())
+}
+
+model UsageLog {
+  id          String    @id @default(cuid())
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  userId      String?
+  kind        String // AI_CALL | UPLOAD | EXPORT | SEARCH
+  model       String?
+  detail      String?
+  createdAt   DateTime  @default(now())
+}
+
+model Answer {
+  id          String    @id @default(cuid())
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  user        User?     @relation(fields: [userId], references: [id])
+  userId      String?
+  question    String
+  answer      String
+  confidence  String    @default("MEDIUM")
+  insufficient Boolean  @default(false)
+  createdAt   DateTime  @default(now())
+}
+
+// Workspace-scoped learning signal. rating: UP | DOWN
+// targetType: ANSWER | PROPOSAL_SECTION | OUTPUT
+model Feedback {
+  id          String    @id @default(cuid())
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  userId      String?
+  targetType  String
+  targetId    String
+  rating      String
+  note        String?
+  createdAt   DateTime  @default(now())
+
+  @@index([workspaceId, targetType])
+}
+
+// Integration.status: CONNECTED | DISABLED (rows only exist once a workspace interacts)
+model Integration {
+  id          String    @id @default(cuid())
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  key         String // e.g. "google-drive", "slack"
+  status      String    @default("CONNECTED")
+  connectedAt DateTime  @default(now())
+
+  @@unique([workspaceId, key])
+}
+
+// Business documents produced from the knowledge base via templates
+// (company profile, case study, capability statement, report, …)
+// status: AI_GENERATED | EDITED | APPROVED
+model GeneratedOutput {
+  id          String    @id @default(cuid())
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId String
+  createdById String?
+  type        String
+  title       String
+  content     String // markdown
+  status      String    @default("AI_GENERATED")
+  confidence  String    @default("MEDIUM")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// Sanitized platform error log for the admin portal. NEVER contains document
+// content, prompts, generated output text, or credentials.
+model ErrorLog {
+  id          String   @id @default(cuid())
+  ref         String   @unique // ERR-2026-XXXXXX shown to the user
+  severity    String   @default("ERROR") // INFO | WARNING | ERROR | CRITICAL
+  category    String   @default("UNHANDLED")
+  message     String // sanitized
+  stack       String? // admin/dev view only
+  route       String?
+  method      String?
+  statusCode  Int      @default(500)
+  workspaceId String?
+  userId      String?
+  meta        String? // sanitized JSON (browser, duration…)
+  createdAt   DateTime @default(now())
+}
