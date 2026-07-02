@@ -1,6 +1,4 @@
 import { NextResponse } from "next/server";
-import { mkdir, writeFile } from "fs/promises";
-import path from "path";
 import { db } from "@/lib/db";
 import { requireApiRole } from "@/lib/api-auth";
 import { extractText, isSupported } from "@/lib/extract";
@@ -10,6 +8,7 @@ import { logAudit, logUsage } from "@/lib/audit";
 import { aiModelLabel } from "@/lib/ai/client";
 import { withApi } from "@/lib/errors";
 import { rateLimit, LIMITS } from "@/lib/ratelimit";
+import { saveWorkspaceFile } from "@/lib/storage";
 
 export const maxDuration = 120;
 
@@ -33,10 +32,12 @@ export const POST = withApi(async (req: Request) => {
     return NextResponse.json({ error: "Could not read any text from this file. Scanned tenders need OCR (roadmap)." }, { status: 400 });
   }
 
-  const dir = path.join(process.cwd(), "uploads", session.workspaceId);
-  await mkdir(dir, { recursive: true });
-  const safeName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
-  await writeFile(path.join(dir, safeName), buffer);
+  const filePath = await saveWorkspaceFile({
+    workspaceId: session.workspaceId,
+    fileName: file.name,
+    mimeType: file.type,
+    buffer,
+  });
 
   const briefDoc = await db.document.create({
     data: {
@@ -44,7 +45,7 @@ export const POST = withApi(async (req: Request) => {
       uploaderId: session.userId,
       title: file.name.replace(/\.[a-z0-9]+$/i, "").replace(/[_-]+/g, " "),
       fileName: file.name,
-      filePath: path.join("uploads", session.workspaceId, safeName),
+      filePath,
       mimeType: file.type || "application/octet-stream",
       sizeBytes: file.size,
       category: "OPPORTUNITY",

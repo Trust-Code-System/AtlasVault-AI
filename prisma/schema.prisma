@@ -1,14 +1,16 @@
 // AtlasVault AI — core schema
-// SQLite for local dev; the schema is written to be portable to PostgreSQL
-// (switch provider + DATABASE_URL, add pgvector for DocumentChunk.embedding).
+// PostgreSQL for production via Supabase.
+// DocumentChunk.embedding is JSON-serialized for now; add pgvector when vector
+// similarity search is promoted from roadmap to production behavior.
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -42,14 +44,14 @@ model Organization {
 }
 
 model Workspace {
-  id            String         @id @default(cuid())
+  id            String            @id @default(cuid())
   name          String
-  slug          String         @unique
-  organization  Organization   @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  slug          String            @unique
+  organization  Organization      @relation(fields: [orgId], references: [id], onDelete: Cascade)
   orgId         String
   // JSON: { learningEnabled, exportApprovalRequired, sensitiveWarnings, webResearchEnabled }
   settings      String?
-  createdAt     DateTime       @default(now())
+  createdAt     DateTime          @default(now())
   memberships   Membership[]
   invites       TeamInvite[]
   documents     Document[]
@@ -243,7 +245,7 @@ model ProposalSection {
   content    String
   status     String   @default("AI_GENERATED")
   confidence String   @default("MEDIUM")
-  missing    String?  // note about missing info for this section
+  missing    String? // note about missing info for this section
 }
 
 // EvidenceItem.strength: STRONG | WEAK | EXPIRED | NEEDS_REVIEW
@@ -332,16 +334,16 @@ model UsageLog {
 }
 
 model Answer {
-  id          String    @id @default(cuid())
-  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  workspaceId String
-  user        User?     @relation(fields: [userId], references: [id])
-  userId      String?
-  question    String
-  answer      String
-  confidence  String    @default("MEDIUM")
-  insufficient Boolean  @default(false)
-  createdAt   DateTime  @default(now())
+  id           String    @id @default(cuid())
+  workspace    Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId  String
+  user         User?     @relation(fields: [userId], references: [id])
+  userId       String?
+  question     String
+  answer       String
+  confidence   String    @default("MEDIUM")
+  insufficient Boolean   @default(false)
+  createdAt    DateTime  @default(now())
 }
 
 // Workspace-scoped learning signal. rating: UP | DOWN

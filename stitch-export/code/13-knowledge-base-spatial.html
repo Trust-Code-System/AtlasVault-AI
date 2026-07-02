@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AtlasVault AI - Knowledge Base</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&amp;family=Outfit:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#2a2a2c",
+                        "surface-variant": "#353437",
+                        "on-secondary-container": "#f2f3ff",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#1c1b1c",
+                        "surface-container": "#201f21",
+                        "primary-fixed": "#9cf0ff",
+                        "on-secondary": "#002d6e",
+                        "primary-container": "#00e5ff",
+                        "on-secondary-fixed-variant": "#00429b",
+                        "inverse-primary": "#006875",
+                        "inverse-surface": "#e5e1e4",
+                        "outline-variant": "#3b494c",
+                        "on-surface": "#e5e1e4",
+                        "tertiary": "#f0eced",
+                        "tertiary-container": "#d3d0d1",
+                        "surface": "#131315",
+                        "on-primary": "#00363d",
+                        "surface-container-low": "#1b1b1d",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#313031",
+                        "background": "#131315",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#474647",
+                        "tertiary-fixed-dim": "#c8c6c7",
+                        "surface-tint": "#00daf3",
+                        "on-primary-fixed": "#001f24",
+                        "on-tertiary-container": "#5a595a",
+                        "on-primary-fixed-variant": "#004f58",
+                        "tertiary-fixed": "#e5e2e3",
+                        "surface-container-lowest": "#0e0e10",
+                        "inverse-on-surface": "#303032",
+                        "surface-bright": "#39393b",
+                        "primary-fixed-dim": "#00daf3",
+                        "outline": "#849396",
+                        "surface-container-highest": "#353437",
+                        "primary": "#c3f5ff",
+                        "surface-dim": "#131315",
+                        "secondary-fixed": "#d9e2ff",
+                        "secondary-container": "#0068ed",
+                        "on-secondary-fixed": "#001945",
+                        "secondary-fixed-dim": "#b0c6ff",
+                        "on-primary-container": "#00626e",
+                        "on-surface-variant": "#bac9cc",
+                        "secondary": "#b0c6ff",
+                        "on-background": "#e5e1e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "spatial-gap": "32px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "container-max": "1440px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Outfit"],
+                        "label-md": ["Outfit"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background-color: rgba(32, 31, 33, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 40px rgba(5, 5, 5, 0.4);
+        }
+        .glow-effect {
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+        }
+        .bg-spatial-gradient {
+            background: radial-gradient(circle at 50% -20%, rgba(0, 229, 255, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 100% 50%, rgba(0, 104, 237, 0.05) 0%, transparent 40%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen bg-spatial-gradient overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Web) -->
+<nav class="hidden md:flex fixed top-spatial-gap left-1/2 -translate-x-1/2 w-[95%] rounded-full h-16 bg-surface-container/60 backdrop-blur-xl border border-white/10 shadow-xl justify-between items-center px-margin-desktop z-50">
+<div class="font-headline-md text-headline-md font-extrabold tracking-tighter text-on-surface">AtlasVault AI</div>
+<div class="flex items-center gap-gutter">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors text-label-lg font-label-lg" href="#">Network</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors text-label-lg font-label-lg" href="#">History</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors text-label-lg font-label-lg" href="#">Team</a>
+</div>
+<div class="flex items-center gap-gutter">
+<button class="text-primary-container hover:shadow-glow-sm duration-500 font-label-lg text-label-lg">New Analysis</button>
+<div class="flex gap-unit text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">help</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-white/10">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Close up portrait of a professional corporate user. Soft, high-end studio lighting against a dark grey background. Hyper-realistic, corporate modern aesthetic with a focus on subtle shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgCqoY0JHHJSnPV-5Tr_xsao_CkUw7nhQ6FbtBzamiXsbp9soAddxht_G3rZH066MwbOGA6WJbVBBHvcbO3Vz44QdGCLV2Utx7lA2DnaV87So0IRM94o1KTU4Rgu6At_7lf9YvmJDTSD2mD87SWQqt_Dce5ESOvrFnw9suAgmgEavfESwvT474gnbHLfzQsl-CaouI6pyFFxe0bQnaVZx-ZVmcKTaEEa8Wy12gThOUDLFlVvzCJ5ZL"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Web) -->
+<aside class="hidden md:flex fixed left-spatial-gap top-1/2 -translate-y-1/2 w-20 rounded-full h-[819px] bg-surface-container/60 backdrop-blur-xl border border-white/10 shadow-[0_0_40px_rgba(5,5,5,0.4)] flex-col items-center py-unit gap-gutter z-40 shadow-2xl shadow-surface-container-lowest">
+<div class="flex items-center justify-center text-on-surface-variant w-12 h-12 hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90 transition-transform rounded-full mt-4" title="Dashboard">
+<span class="material-symbols-outlined">grid_view</span>
+</div>
+<!-- Active Tab: Vault (Closest to Knowledge Base) -->
+<div class="flex items-center justify-center bg-primary-container/20 text-primary-container rounded-full w-12 h-12 shadow-[0_0_15px_rgba(0,229,255,0.2)] scale-95 active:scale-90 transition-transform" title="Vault">
+<span class="material-symbols-outlined">folder_managed</span>
+</div>
+<div class="flex items-center justify-center text-on-surface-variant w-12 h-12 hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90 transition-transform rounded-full" title="AI Insight">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div class="flex items-center justify-center text-on-surface-variant w-12 h-12 hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90 transition-transform rounded-full" title="Flows">
+<span class="material-symbols-outlined">account_tree</span>
+</div>
+<div class="flex items-center justify-center text-on-surface-variant w-12 h-12 hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90 transition-transform rounded-full" title="Reports">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div class="mt-auto flex items-center justify-center text-on-surface-variant w-12 h-12 hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90 transition-transform rounded-full mb-4" title="Settings">
+<span class="material-symbols-outlined">settings</span>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-32 md:pt-40 px-margin-mobile md:px-margin-desktop md:ml-32 pb-32 max-w-container-max mx-auto relative z-10">
+<!-- Header Section -->
+<header class="mb-spatial-gap flex flex-col md:flex-row md:items-end justify-between gap-gutter">
+<div class="max-w-2xl">
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-unit">Knowledge Base</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Your company knowledge, compiled into a living intelligence layer.</p>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-lg text-label-lg flex items-center gap-2 glow-effect hover:bg-surface-tint transition-colors duration-300 w-fit shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                Compile Knowledge
+            </button>
+</header>
+<!-- Bento Grid / Cards Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1: Company Policies -->
+<article class="glass-panel rounded-xl p-6 flex flex-col gap-4 relative group hover:-translate-y-1 transition-transform duration-500">
+<div class="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent rounded-xl pointer-events-none"></div>
+<header class="flex justify-between items-start z-10">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border border-white/5 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">policy</span>
+</div>
+<div class="flex gap-2">
+<span class="bg-primary-container/10 text-primary-container px-2 py-1 rounded text-label-md font-label-md border border-primary-container/20 backdrop-blur-md">Approved</span>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded text-label-md font-label-md border border-white/5 backdrop-blur-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bolt</span> 98%
+                        </span>
+</div>
+</header>
+<div class="z-10 mt-2">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Company Policies</h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Compiled employee handbooks, compliance guidelines, and internal operational procedures updated for Q4.</p>
+</div>
+<footer class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center text-on-surface-variant font-label-md text-label-md z-10">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">library_books</span> 124 Citations</span>
+<span>Updated 2h ago</span>
+</footer>
+</article>
+<!-- Card 2: Staff CVs -->
+<article class="glass-panel rounded-xl p-6 flex flex-col gap-4 relative group hover:-translate-y-1 transition-transform duration-500">
+<div class="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent rounded-xl pointer-events-none"></div>
+<header class="flex justify-between items-start z-10">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border border-white/5 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">badge</span>
+</div>
+<div class="flex gap-2">
+<span class="bg-secondary-container/20 text-secondary px-2 py-1 rounded text-label-md font-label-md border border-secondary-container/30 backdrop-blur-md">Live Sync</span>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded text-label-md font-label-md border border-white/5 backdrop-blur-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bolt</span> 95%
+                        </span>
+</div>
+</header>
+<div class="z-10 mt-2">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Staff Resumes</h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Aggregated technical skill matrices, historical project assignments, and performance review abstracts.</p>
+</div>
+<footer class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center text-on-surface-variant font-label-md text-label-md z-10">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">group</span> 850 Profiles</span>
+<span>Updated 1d ago</span>
+</footer>
+</article>
+<!-- Card 3: Project Reports -->
+<article class="glass-panel rounded-xl p-6 flex flex-col gap-4 relative group hover:-translate-y-1 transition-transform duration-500">
+<div class="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent rounded-xl pointer-events-none"></div>
+<header class="flex justify-between items-start z-10">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border border-white/5 flex items-center justify-center text-inverse-primary">
+<span class="material-symbols-outlined">monitoring</span>
+</div>
+<div class="flex gap-2">
+<span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded text-label-md font-label-md border border-white/5 backdrop-blur-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bolt</span> 88%
+                        </span>
+</div>
+</header>
+<div class="z-10 mt-2">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Project Reports</h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Post-mortem analysis, financial impact summaries, and strategic outcomes from legacy and active initiatives.</p>
+</div>
+<footer class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center text-on-surface-variant font-label-md text-label-md z-10">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">folder_open</span> 42 Folders</span>
+<span>Updated 5d ago</span>
+</footer>
+</article>
+</div>
+</main>
+</body></html>

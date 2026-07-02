@@ -53,13 +53,13 @@ export default async function SettingsPage() {
           <CardHeader title="AI engine" subtitle="Model routing for generation, classification and Q&A" />
           <div className="px-5 py-4 text-sm">
             <div className="flex items-center gap-2">
-              <Badge tone={aiEnabled() ? "green" : "amber"}>{aiEnabled() ? "Claude connected" : "Local Knowledge Mode"}</Badge>
+              <Badge tone={aiEnabled() ? "green" : "amber"}>{aiEnabled() ? "AI connected" : "Local Knowledge Mode"}</Badge>
               <span className="text-xs text-slate-500">{aiModelLabel()}</span>
             </div>
             <p className="mt-3 text-xs leading-5 text-slate-500">
               {aiEnabled()
-                ? "Generation, classification and Q&A run on Claude. Retrieval stays local; only relevant excerpts are sent to the model, and answers must cite them."
-                : "No ANTHROPIC_API_KEY configured. AtlasVault is running in deterministic Local Knowledge Mode: summaries, classification and answers are extracted verbatim from your documents (never invented). Add a key to .env and restart to enable full generative drafting."}
+                ? "Generation, classification and Q&A run on the configured AI provider. Retrieval stays local; only relevant excerpts are sent to the model, and answers must cite them."
+                : "No OPENAI_API_KEY or ANTHROPIC_API_KEY configured. AtlasVault is running in deterministic Local Knowledge Mode: summaries, classification and answers are extracted verbatim from your documents. Add a provider key to .env and restart to enable full generative drafting."}
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {usage.map((u) => (

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AtlasVault AI - Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600&amp;family=Plus+Jakarta+Sans:wght@400;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#2a2a2c",
+                      "surface-variant": "#353437",
+                      "on-secondary-container": "#f2f3ff",
+                      "on-error": "#690005",
+                      "on-tertiary-fixed": "#1c1b1c",
+                      "surface-container": "#201f21",
+                      "primary-fixed": "#9cf0ff",
+                      "on-secondary": "#002d6e",
+                      "primary-container": "#00e5ff",
+                      "on-secondary-fixed-variant": "#00429b",
+                      "inverse-primary": "#006875",
+                      "inverse-surface": "#e5e1e4",
+                      "outline-variant": "#3b494c",
+                      "on-surface": "#e5e1e4",
+                      "tertiary": "#f0eced",
+                      "tertiary-container": "#d3d0d1",
+                      "surface": "#131315",
+                      "on-primary": "#00363d",
+                      "surface-container-low": "#1b1b1d",
+                      "error-container": "#93000a",
+                      "on-tertiary": "#313031",
+                      "background": "#131315",
+                      "on-error-container": "#ffdad6",
+                      "error": "#ffb4ab",
+                      "on-tertiary-fixed-variant": "#474647",
+                      "tertiary-fixed-dim": "#c8c6c7",
+                      "surface-tint": "#00daf3",
+                      "on-primary-fixed": "#001f24",
+                      "on-tertiary-container": "#5a595a",
+                      "on-primary-fixed-variant": "#004f58",
+                      "tertiary-fixed": "#e5e2e3",
+                      "surface-container-lowest": "#0e0e10",
+                      "inverse-on-surface": "#303032",
+                      "surface-bright": "#39393b",
+                      "primary-fixed-dim": "#00daf3",
+                      "outline": "#849396",
+                      "surface-container-highest": "#353437",
+                      "primary": "#c3f5ff",
+                      "surface-dim": "#131315",
+                      "secondary-fixed": "#d9e2ff",
+                      "secondary-container": "#0068ed",
+                      "on-secondary-fixed": "#001945",
+                      "secondary-fixed-dim": "#b0c6ff",
+                      "on-primary-container": "#00626e",
+                      "on-surface-variant": "#bac9cc",
+                      "secondary": "#b0c6ff",
+                      "on-background": "#e5e1e4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "spatial-gap": "32px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "container-max": "1440px",
+                      "margin-desktop": "40px"
+              },
+              "fontFamily": {
+                      "label-lg": ["Outfit"],
+                      "label-md": ["Outfit"],
+                      "headline-xl": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "label-lg": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: #050505; /* Deep obsidian as per prompt/guidance */
+            background-image: radial-gradient(circle at 50% -20%, rgba(0, 229, 255, 0.15) 0%, transparent 60%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        
+        .glass-panel {
+            background: rgba(32, 31, 33, 0.6); /* surface-container */
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 80px rgba(5, 5, 5, 0.4);
+        }
+        
+        .glass-card {
+            background: rgba(42, 42, 44, 0.4); /* surface-container-high with lower opacity */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(5, 5, 5, 0.3);
+        }
+
+        .glow-accent {
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+        }
+
+        .bar-chart-fill {
+            background: linear-gradient(180deg, rgba(0, 229, 255, 0.8) 0%, rgba(0, 104, 237, 0.2) 100%);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            border-bottom: none;
+            backdrop-filter: blur(8px);
+        }
+        
+        /* Subtle animation for data entrance */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="text-on-surface antialiased overflow-x-hidden">
+<!-- TopNavBar (Hidden on Mobile, flex on md+) -->
+<nav class="hidden md:flex fixed top-spatial-gap left-1/2 -translate-x-1/2 w-[95%] rounded-full h-16 border border-white/10 shadow-[0_40px_40px_rgba(5,5,5,0.4)] shadow-xl bg-surface-container/60 backdrop-blur-xl flex justify-between items-center px-margin-desktop z-50">
+<div class="flex items-center gap-gutter">
+<span class="font-headline-md text-headline-md font-extrabold tracking-tighter text-on-surface">AtlasVault AI</span>
+</div>
+<!-- Search omitted based on prompt focus, adding placeholder space -->
+<div class="flex-1"></div>
+<div class="flex items-center gap-gutter">
+<!-- Navigation Links -->
+<div class="flex gap-gutter">
+<a class="text-on-surface-variant font-medium font-label-lg text-label-lg hover:text-primary transition-colors hover:shadow-glow-sm duration-500" href="#">Network</a>
+<a class="text-on-surface-variant font-medium font-label-lg text-label-lg hover:text-primary transition-colors hover:shadow-glow-sm duration-500" href="#">History</a>
+<a class="text-on-surface-variant font-medium font-label-lg text-label-lg hover:text-primary transition-colors hover:shadow-glow-sm duration-500" href="#">Team</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-lg text-label-lg glow-accent hover:bg-surface-tint transition-colors">
+                New Analysis
+            </button>
+<div class="flex gap-unit text-on-surface-variant">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help</span></button>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-white/20">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A stylized, futuristic avatar portrait of a user in a dimly lit, neon-accented environment. High fidelity, glassmorphism aesthetic with subtle cyan lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt1m58Si70rILxmiV7aHcokmtrp-0OtrEcn-5PULQSMhAd4lK738z83mDqZ5od2enpnFnoYZ_IxoN9C60DpwgbB4yC8kktluLm6lZedrhFTjtW0UTfk8WDXoIGKp41VJloR-Ch2gRL3SmL4uK207jPiL7NDOgLEbCVzFuGmmtS8SHP-x3j0paZsGf1swMN4CE0c-Tlti0G_HrJKTpqJVnwfkrunKGx2tO-zR7kHUC2xGQKVCBRRs-X"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Hidden on Mobile, flex on md+) -->
+<aside class="hidden md:flex fixed left-spatial-gap top-1/2 -translate-y-1/2 w-20 rounded-full h-[819px] border border-white/10 shadow-[0_0_40px_rgba(5,5,5,0.4)] shadow-2xl shadow-surface-container-lowest bg-surface-container/60 backdrop-blur-xl flex-col items-center py-unit gap-gutter z-40">
+<div class="mt-4 mb-8">
+<span class="font-headline-md text-headline-md font-bold text-primary-container">AV</span>
+</div>
+<div class="flex flex-col gap-unit w-full px-2">
+<!-- Tabs. "Reports" maps to Analytics -->
+<a class="flex items-center justify-center text-on-surface-variant w-12 h-12 rounded-full hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90" href="#" title="Dashboard">
+<span class="material-symbols-outlined text-[24px]">grid_view</span>
+</a>
+<a class="flex items-center justify-center text-on-surface-variant w-12 h-12 rounded-full hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90" href="#" title="Vault">
+<span class="material-symbols-outlined text-[24px]">folder_managed</span>
+</a>
+<a class="flex items-center justify-center text-on-surface-variant w-12 h-12 rounded-full hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90" href="#" title="AI Insight">
+<span class="material-symbols-outlined text-[24px]">psychology</span>
+</a>
+<a class="flex items-center justify-center text-on-surface-variant w-12 h-12 rounded-full hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90" href="#" title="Flows">
+<span class="material-symbols-outlined text-[24px]">account_tree</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center justify-center bg-primary-container/20 text-primary-container rounded-full w-12 h-12 shadow-[0_0_15px_rgba(0,229,255,0.2)] hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90" href="#" title="Reports">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</a>
+<a class="flex items-center justify-center text-on-surface-variant w-12 h-12 rounded-full hover:bg-white/5 transition-all duration-300 scale-95 active:scale-90" href="#" title="Settings">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+</a>
+</div>
+<div class="mt-auto mb-4">
+<button class="flex items-center justify-center w-12 h-12 rounded-full bg-surface-variant text-on-surface hover:bg-white/10 transition-colors" title="Upgrade">
+<span class="material-symbols-outlined">star</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="pt-32 md:pt-40 px-margin-mobile md:px-[140px] max-w-container-max mx-auto pb-24">
+<!-- Header -->
+<header class="mb-spatial-gap animate-fade-up">
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-2">Analytics</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Track your win rate and knowledge growth.</p>
+</header>
+<!-- 4-Column Stat Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-spatial-gap">
+<!-- Stat Card 1 -->
+<div class="glass-card rounded-xl p-6 animate-fade-up delay-1 flex flex-col justify-between h-40 group hover:border-primary-container/30 transition-colors">
+<div class="flex justify-between items-start">
+<h3 class="font-label-lg text-label-lg text-on-surface-variant">Hours Saved</h3>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-[18px] text-primary">schedule</span>
+</div>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-on-surface">1,240<span class="text-primary-container text-body-lg ml-1">h</span></div>
+<div class="font-label-md text-label-md text-primary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +12% this month
+                    </div>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="glass-card rounded-xl p-6 animate-fade-up delay-1 flex flex-col justify-between h-40 group hover:border-primary-container/30 transition-colors">
+<div class="flex justify-between items-start">
+<h3 class="font-label-lg text-label-lg text-on-surface-variant">Proposals Generated</h3>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-[18px] text-primary">description</span>
+</div>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-on-surface">84</div>
+<div class="font-label-md text-label-md text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">horizontal_rule</span> Steady rate
+                    </div>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="glass-card rounded-xl p-6 animate-fade-up delay-2 flex flex-col justify-between h-40 group hover:border-primary-container/30 transition-colors">
+<div class="flex justify-between items-start">
+<h3 class="font-label-lg text-label-lg text-on-surface-variant">Documents Processed</h3>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center group-hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined text-[18px] text-primary">source</span>
+</div>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-on-surface">14,592</div>
+<div class="font-label-md text-label-md text-primary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +3.4k new
+                    </div>
+</div>
+</div>
+<!-- Stat Card 4 (Highlighted) -->
+<div class="glass-panel rounded-xl p-6 animate-fade-up delay-2 flex flex-col justify-between h-40 border-primary-container/30 relative overflow-hidden">
+<!-- Decorative glow background -->
+<div class="absolute -right-10 -bottom-10 w-32 h-32 bg-primary-container/20 blur-[40px] rounded-full pointer-events-none"></div>
+<div class="flex justify-between items-start relative z-10">
+<h3 class="font-label-lg text-label-lg text-on-surface-variant">Win Rate</h3>
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center glow-accent">
+<span class="material-symbols-outlined text-[18px] text-primary-container" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+</div>
+</div>
+<div class="relative z-10">
+<div class="font-headline-xl text-headline-xl text-primary-container drop-shadow-[0_0_10px_rgba(0,229,255,0.3)]">68%</div>
+<div class="font-label-md text-label-md text-on-surface mt-1">Target: 70%</div>
+</div>
+</div>
+</section>
+<!-- 2-Column Main Data Layout -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-spatial-gap">
+<!-- Left: Team Activity Bar Chart -->
+<div class="glass-panel rounded-xl p-8 animate-fade-up delay-3 min-h-[400px] flex flex-col">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-md text-headline-md text-on-surface">Team Activity</h2>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-highest">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<!-- Custom CSS Bar Chart -->
+<div class="flex-1 flex items-end gap-2 sm:gap-4 relative mt-auto border-b border-surface-variant pb-4">
+<!-- Y-axis labels -->
+<div class="absolute -left-2 top-0 h-full flex flex-col justify-between text-on-surface-variant font-label-md text-label-md pb-4 -translate-x-full">
+<span>100</span>
+<span>50</span>
+<span>0</span>
+</div>
+<!-- Bars -->
+<div class="w-full flex justify-between items-end h-[240px] px-2">
+<div class="w-[12%] h-[40%] bar-chart-fill rounded-t-sm relative group cursor-pointer">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-highest text-on-surface font-label-md text-label-md px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">40</div>
+</div>
+<div class="w-[12%] h-[65%] bar-chart-fill rounded-t-sm relative group cursor-pointer">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-highest text-on-surface font-label-md text-label-md px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">65</div>
+</div>
+<div class="w-[12%] h-[30%] bar-chart-fill rounded-t-sm relative group cursor-pointer">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-highest text-on-surface font-label-md text-label-md px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">30</div>
+</div>
+<div class="w-[12%] h-[85%] bar-chart-fill rounded-t-sm relative group cursor-pointer glow-accent">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-primary-container text-on-primary-container font-label-md text-label-md px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-[0_0_10px_rgba(0,229,255,0.5)]">85</div>
+</div>
+<div class="w-[12%] h-[50%] bar-chart-fill rounded-t-sm relative group cursor-pointer">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-highest text-on-surface font-label-md text-label-md px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">50</div>
+</div>
+<div class="w-[12%] h-[70%] bar-chart-fill rounded-t-sm relative group cursor-pointer">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-highest text-on-surface font-label-md text-label-md px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">70</div>
+</div>
+<div class="w-[12%] h-[45%] bar-chart-fill rounded-t-sm relative group cursor-pointer">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-highest text-on-surface font-label-md text-label-md px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">45</div>
+</div>
+</div>
+</div>
+<!-- X-axis labels -->
+<div class="flex justify-between px-2 pt-4 font-label-md text-label-md text-on-surface-variant">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span class="text-primary-container font-bold">Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+<!-- Right: Top Reused Evidence Ranked List -->
+<div class="glass-panel rounded-xl p-8 animate-fade-up delay-3 min-h-[400px]">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Top Reused Evidence</h2>
+<span class="font-label-md text-label-md text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">Last 30 Days</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- List Item 1 -->
+<div class="glass-card rounded-lg p-4 flex items-center gap-4 hover:bg-surface-container-high/50 transition-colors cursor-pointer border-l-2 border-l-primary-container">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center font-label-lg text-label-lg text-primary-container">1</div>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md text-on-surface line-clamp-1">Q3 Technical Architecture Overview</h4>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Source: Engineering Wiki</p>
+</div>
+<div class="text-right">
+<div class="font-label-lg text-label-lg text-primary-container">142</div>
+<div class="font-label-md text-label-md text-on-surface-variant text-[10px]">Citations</div>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="glass-card rounded-lg p-4 flex items-center gap-4 hover:bg-surface-container-high/50 transition-colors cursor-pointer border-l-2 border-l-transparent">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center font-label-lg text-label-lg text-on-surface-variant">2</div>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md text-on-surface line-clamp-1">Enterprise Security Compliance Specs</h4>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Source: Legal Docs</p>
+</div>
+<div class="text-right">
+<div class="font-label-lg text-label-lg text-on-surface">98</div>
+<div class="font-label-md text-label-md text-on-surface-variant text-[10px]">Citations</div>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="glass-card rounded-lg p-4 flex items-center gap-4 hover:bg-surface-container-high/50 transition-colors cursor-pointer border-l-2 border-l-transparent">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center font-label-lg text-label-lg text-on-surface-variant">3</div>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md text-on-surface line-clamp-1">Case Study: Global Deployment</h4>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Source: Sales Vault</p>
+</div>
+<div class="text-right">
+<div class="font-label-lg text-label-lg text-on-surface">76</div>
+<div class="font-label-md text-label-md text-on-surface-variant text-[10px]">Citations</div>
+</div>
+</div>
+<!-- List Item 4 -->
+<div class="glass-card rounded-lg p-4 flex items-center gap-4 hover:bg-surface-container-high/50 transition-colors cursor-pointer border-l-2 border-l-transparent">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center font-label-lg text-label-lg text-on-surface-variant">4</div>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md text-on-surface line-clamp-1">ROI Calculation Methodology</h4>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Source: Finance Dept</p>
+</div>
+<div class="text-right">
+<div class="font-label-lg text-label-lg text-on-surface">45</div>
+<div class="font-label-md text-label-md text-on-surface-variant text-[10px]">Citations</div>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 py-3 rounded-lg border border-white/10 hover:bg-white/5 font-label-lg text-label-lg text-primary transition-colors">
+                    View Full Report
+                </button>
+</div>
+</section>
+</main>
+<!-- Background decoration for spatial depth -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+<div class="absolute top-[20%] right-[10%] w-[500px] h-[500px] rounded-full bg-primary-container/5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#0068ed]/5 blur-[150px]"></div>
+</div>
+</body></html>

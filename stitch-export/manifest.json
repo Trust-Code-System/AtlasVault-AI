@@ -1,0 +1,222 @@
+﻿{
+    "project":  {
+                    "title":  "AtlasVault AI: Studio Design",
+                    "id":  "1027086473815683863",
+                    "exportedAt":  "2026-07-02T10:12:32.8809341+01:00"
+                },
+    "screens":  [
+                    {
+                        "order":  1,
+                        "title":  "Output Studio — AtlasVault AI (Spatial)",
+                        "id":  "0062d733e7cd4a6e8f6f1ccd14956665",
+                        "width":  2816,
+                        "height":  2458,
+                        "image":  "images/01-output-studio-spatial.png",
+                        "code":  "code/01-output-studio-spatial.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLuNEgfUfzM1PvxjPwc-fFxGhS3G1fCIKVUR3OfJ1W8MTQCaj2LhoVgLFQo8pkVkYRLg0Xrk-umyYBCLsOYzfKXL1U-vRBjl2ixPvA7KelwBqudDJApqVLpfj6vW_9z9TTLCGToCcH55exrng2xQGTOF0H9OAXo29I38MYn6PNO3UhpPdej3NlvLGObv2A7gVzCoN1dN4Ro7shh7KtYIeMxzfmTM8LJU9CVQEDLk-KaRQKg4K8ehvHDB_rc",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljN2NkMzQ2ZjkwMjNiZDhhMDZiMTlhMzVlEgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLuNEgfUfzM1PvxjPwc-fFxGhS3G1fCIKVUR3OfJ1W8MTQCaj2LhoVgLFQo8pkVkYRLg0Xrk-umyYBCLsOYzfKXL1U-vRBjl2ixPvA7KelwBqudDJApqVLpfj6vW_9z9TTLCGToCcH55exrng2xQGTOF0H9OAXo29I38MYn6PNO3UhpPdej3NlvLGObv2A7gVzCoN1dN4Ro7shh7KtYIeMxzfmTM8LJU9CVQEDLk-KaRQKg4K8ehvHDB_rc=s0"
+                    },
+                    {
+                        "order":  2,
+                        "title":  "Documents — AtlasVault AI (Refined Spatial)",
+                        "id":  "23f8816d597749469b09560af0bf6fec",
+                        "width":  2880,
+                        "height":  2458,
+                        "image":  "images/02-documents-refined-spatial.png",
+                        "code":  "code/02-documents-refined-spatial.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLtmULW0RLlvED3qbiWCpQrh_N5VycOlHmNav4ExNTpuG38cJ-EPMZPxldg3luyy8P7FNsKhr1hf27qh3TDAVFtEVLwxY-nTF_66VhBHLXIIEbsF0P4OYFmmu5B-L368EZJJuL1A50yX1GM9RH5gLsUSGhPRNQtnWUwWHkxru4Z5tRUz6nVLR0j7OAdT_PjuTb5_H-1CRACva9Uw0fz1ynvisrUBd4iGAB9yme7JDg2oo6qfSyIYr5YfQVU",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljNWZhZWY1YzQwMjNiZDhhMDZiMTlhMzVlEgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLtmULW0RLlvED3qbiWCpQrh_N5VycOlHmNav4ExNTpuG38cJ-EPMZPxldg3luyy8P7FNsKhr1hf27qh3TDAVFtEVLwxY-nTF_66VhBHLXIIEbsF0P4OYFmmu5B-L368EZJJuL1A50yX1GM9RH5gLsUSGhPRNQtnWUwWHkxru4Z5tRUz6nVLR0j7OAdT_PjuTb5_H-1CRACva9Uw0fz1ynvisrUBd4iGAB9yme7JDg2oo6qfSyIYr5YfQVU=s0"
+                    },
+                    {
+                        "order":  3,
+                        "title":  "Ask AI — AtlasVault AI (Spatial)",
+                        "id":  "3276d6b8589b482e92d1477067941a45",
+                        "width":  2560,
+                        "height":  2048,
+                        "image":  "images/03-ask-ai-spatial.png",
+                        "code":  "code/03-ask-ai-spatial.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLvThcs6hzMRUZMm6QIKIPWg-kWG46jAp8nW_dcSo4Vx324Aemm0zMPwYQefyTtBB4Nrn_Fp_-SJkeYLvDxSGd_UVW_TQkjEibB3K8AL0aohW9t2_zqggO0yCIATEi_uWkg2XicCKgQQj5WRVoSizodsbClV0Yt8od9xc4bqp7tY5eCm-HDg712-gfgkhcyTpNYmjgY8Le8BiT1paP2XJYkLFYHPUAdcUwTkhr_Zv4ITn4sVDcW5zi_DYQ",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljNmIyMDljODgwMzU2Y2ZlMTJiMTdjNmNmEgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLvThcs6hzMRUZMm6QIKIPWg-kWG46jAp8nW_dcSo4Vx324Aemm0zMPwYQefyTtBB4Nrn_Fp_-SJkeYLvDxSGd_UVW_TQkjEibB3K8AL0aohW9t2_zqggO0yCIATEi_uWkg2XicCKgQQj5WRVoSizodsbClV0Yt8od9xc4bqp7tY5eCm-HDg712-gfgkhcyTpNYmjgY8Le8BiT1paP2XJYkLFYHPUAdcUwTkhr_Zv4ITn4sVDcW5zi_DYQ=s0"
+                    },
+                    {
+                        "order":  4,
+                        "title":  "Settings — AtlasVault AI (Spatial)",
+                        "id":  "3a946099704943ad834929a3e71d8b34",
+                        "width":  2560,
+                        "height":  2048,
+                        "image":  "images/04-settings-spatial.png",
+                        "code":  "code/04-settings-spatial.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLsY_bWrbsFvcu01pyLUul-BMCsBvHfkT3mA3jKFtOz4YyWYJDv1CA5-BTp41a2d3mB0Zt_kqDLApWjip6wA429T10IVMGQK__gQpIu1fsc7S05jRMoj5WIi9oG6J_5pdg0zSejiizIm5ZVMqQGo-kr9d8tKLHteK4oBSQmOsgqqvuQYhayNdNtNaD_Khn5K7O8tCu4EUkFoeG_XAGt1xkSPxE4KFE6eIvV4tON3gVVKts0-RJCG7b-QV6Q",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljODg4MzQ3NzIwNDc5ZjFmOGJmMDViMGQxEgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLsY_bWrbsFvcu01pyLUul-BMCsBvHfkT3mA3jKFtOz4YyWYJDv1CA5-BTp41a2d3mB0Zt_kqDLApWjip6wA429T10IVMGQK__gQpIu1fsc7S05jRMoj5WIi9oG6J_5pdg0zSejiizIm5ZVMqQGo-kr9d8tKLHteK4oBSQmOsgqqvuQYhayNdNtNaD_Khn5K7O8tCu4EUkFoeG_XAGt1xkSPxE4KFE6eIvV4tON3gVVKts0-RJCG7b-QV6Q=s0"
+                    },
+                    {
+                        "order":  5,
+                        "title":  "Sign In — AtlasVault AI (Refined Spatial)",
+                        "id":  "4b9a1dc46e5b4a6791b65e564157b468",
+                        "width":  2560,
+                        "height":  2048,
+                        "image":  "images/05-sign-in-refined-spatial.png",
+                        "code":  "code/05-sign-in-refined-spatial.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLurAB-KolEIvx7q9UJdpa5qF5RCpc8uypBekp7ButEsimnvyjNneIv0Saa7h3ZAa0cD03Up2iRmd-JML2t1YvP3oK6TlTI_JCO5W87JHWljmMjmGIDAiyZEn39-6GX4ncNIk1FOwzHzK2yHy3O3kKT8xgUEcvED6lhM7Xb_9QBWcfnLf3aHbjXFBGC3qZ9E_SKL8ia_i_bB_zg3tvJKWELG91fCdNhBrFtBUgymdvjcWor5bi63sKsWu-Y",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljNWUzMTBjM2QwMjNiZTkxNjQwMzhjYWQ1EgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLurAB-KolEIvx7q9UJdpa5qF5RCpc8uypBekp7ButEsimnvyjNneIv0Saa7h3ZAa0cD03Up2iRmd-JML2t1YvP3oK6TlTI_JCO5W87JHWljmMjmGIDAiyZEn39-6GX4ncNIk1FOwzHzK2yHy3O3kKT8xgUEcvED6lhM7Xb_9QBWcfnLf3aHbjXFBGC3qZ9E_SKL8ia_i_bB_zg3tvJKWELG91fCdNhBrFtBUgymdvjcWor5bi63sKsWu-Y=s0"
+                    },
+                    {
+                        "order":  6,
+                        "title":  "Proposal Builder — AtlasVault AI (Spatial)",
+                        "id":  "5db9176576c746d2856102c5b54deda7",
+                        "width":  2560,
+                        "height":  2882,
+                        "image":  "images/06-proposal-builder-spatial.png",
+                        "code":  "code/06-proposal-builder-spatial.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLtK_W2sj6RZfyyGSpwk6r4KaM-bUfTjDzFgqvondFqKm20kaTdcQ3BZhBw20J18OgyMtDRwYQb5peR-CB3EktxEuGuTGjmzO3zsFS31_CKJpn-KfurKQU8uKTSewnCRzcml15NrilT0gEh3hzUJ7k87F6uGuB4C4qiLegfa3HGlmqIfchOP3-YFvH3RP93yUstZzwSOoNPrGozAPqrILb37db6gYQg0jrTxENIEJLWu7AC6vZDYnxxoHuU",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljN2QyMmNkMDgwMjNiZTg1YmE5MTMxMjE3EgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLtK_W2sj6RZfyyGSpwk6r4KaM-bUfTjDzFgqvondFqKm20kaTdcQ3BZhBw20J18OgyMtDRwYQb5peR-CB3EktxEuGuTGjmzO3zsFS31_CKJpn-KfurKQU8uKTSewnCRzcml15NrilT0gEh3hzUJ7k87F6uGuB4C4qiLegfa3HGlmqIfchOP3-YFvH3RP93yUstZzwSOoNPrGozAPqrILb37db6gYQg0jrTxENIEJLWu7AC6vZDYnxxoHuU=s0"
+                    },
+                    {
+                        "order":  7,
+                        "title":  "Health Check — AtlasVault AI (Spatial)",
+                        "id":  "62ad232d9a3744fc81ba5e268ee866b9",
+                        "width":  2560,
+                        "height":  2048,
+                        "image":  "images/07-health-check-spatial.png",
+                        "code":  "code/07-health-check-spatial.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLut-cuH8cR5oxqKIJnq6fIVFBptoSmpn7sI4u-yKMKWOArd8hxz4JijW-yN80TFEqppgfiKPMlW-7jfeTtRpuCQI2kxY3tjZT-OkFhi3jPzAE26ZfGzR6bCcrPPuIrnD6crziGxgfDxUSdaZCwRfOUDTACa2d5P_Og79Nj3dB51kS5MEUHkumGr1NYxnGa59M56pNRdh13a2S_cphNcdXrg-m0EuejLSiCj0M4Vz5M16_DYoQUPfyjDZg",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljODhjNjJlYmYwNDRmN2Q0YzVjMGU4MzM4EgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLut-cuH8cR5oxqKIJnq6fIVFBptoSmpn7sI4u-yKMKWOArd8hxz4JijW-yN80TFEqppgfiKPMlW-7jfeTtRpuCQI2kxY3tjZT-OkFhi3jPzAE26ZfGzR6bCcrPPuIrnD6crziGxgfDxUSdaZCwRfOUDTACa2d5P_Og79Nj3dB51kS5MEUHkumGr1NYxnGa59M56pNRdh13a2S_cphNcdXrg-m0EuejLSiCj0M4Vz5M16_DYoQUPfyjDZg=s0"
+                    },
+                    {
+                        "order":  8,
+                        "title":  "Dashboard — AtlasVault AI (Refined Spatial)",
+                        "id":  "67c95be798e047e9a55f4b501ae5e69c",
+                        "width":  2880,
+                        "height":  2338,
+                        "image":  "images/08-dashboard-refined-spatial.png",
+                        "code":  "code/08-dashboard-refined-spatial.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLtfHlDgs6nNKIN1Fgm_LyqRA7KwaegTfrKPJJxoklt1nNtX0SW_oyql8zs4JTZMcXZvEexID8RITxBwnmqv2QRsJUWks9Elj_TsGNShTvxgcD_X095-_RjgMWR0TSXyY2_tOo9DZANDCal2AOIgBxsgwafpDWrUt0HpQQUbMg6Z7QBAmQLcPNSSm5xfldM0Hcg7Vgo6y3pRKGEcv5FSoJ6PzhzymeO7T5QtOyliSjVmMEd0aBw6BkeOtOk",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljNWYwMDlhNTIwOTY4OWE2ZGU5MDRlMWU3EgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLtfHlDgs6nNKIN1Fgm_LyqRA7KwaegTfrKPJJxoklt1nNtX0SW_oyql8zs4JTZMcXZvEexID8RITxBwnmqv2QRsJUWks9Elj_TsGNShTvxgcD_X095-_RjgMWR0TSXyY2_tOo9DZANDCal2AOIgBxsgwafpDWrUt0HpQQUbMg6Z7QBAmQLcPNSSm5xfldM0Hcg7Vgo6y3pRKGEcv5FSoJ6PzhzymeO7T5QtOyliSjVmMEd0aBw6BkeOtOk=s0"
+                    },
+                    {
+                        "order":  9,
+                        "title":  "Opportunities — AtlasVault AI (Spatial)",
+                        "id":  "8f273bb64538466cb52c9c512014883a",
+                        "width":  2560,
+                        "height":  2048,
+                        "image":  "images/09-opportunities-spatial.png",
+                        "code":  "code/09-opportunities-spatial.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLvtNCNqRu2B_p0W77bfbYDdYZ722vVz6uE-bdoFyDp0x3nsjKLHP9BwsXN0oXUwviy6uuW8lxQa0UsAKpMaR5RA_vzexZmbkcgOvo27-P6MsHHgydz80gkmsDCkGv5HeYJErVoBRRFvWtaxuMp_IcJ871B3EuUGdG5EVY3-vXOKcbHL3Su76nqN6c_VZiQF_khFUiEyfJImcEb6y1dRR9dxbhzcwi07lFoyyPi7kWV_bE8m71pQEy4VPyM",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljNmM3NDY5YzkwOTY4OWE2ZGU5MDRlMWU3EgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLvtNCNqRu2B_p0W77bfbYDdYZ722vVz6uE-bdoFyDp0x3nsjKLHP9BwsXN0oXUwviy6uuW8lxQa0UsAKpMaR5RA_vzexZmbkcgOvo27-P6MsHHgydz80gkmsDCkGv5HeYJErVoBRRFvWtaxuMp_IcJ871B3EuUGdG5EVY3-vXOKcbHL3Su76nqN6c_VZiQF_khFUiEyfJImcEb6y1dRR9dxbhzcwi07lFoyyPi7kWV_bE8m71pQEy4VPyM=s0"
+                    },
+                    {
+                        "order":  10,
+                        "title":  "Documents — AtlasVault AI (Spatial)",
+                        "id":  "99e383c780434ec7829c0dde27c0f7a2",
+                        "width":  2880,
+                        "height":  2458,
+                        "image":  "images/10-documents-spatial.png",
+                        "code":  "code/10-documents-spatial.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLsHRkvf7KGOO3Y74kWHm0QOIhB1kOVAVK0-fcScdK6w0vBxURlOqeg9kDs8Q6eV8jHMdIlEUlMhygu9LziD9iunpzUfQUfSNU0UB1oXF6GezX-SzjugoVHVyiEiZ_KiGiLL2abCU-2cWlK2J8OHYWUMLBYpRvkHnx6VFYUZk_fnLsHRJrsW7TnBMrG-ziP4fBiYhB6woVgjCTR4uS899ELWhvSGz6AIDqm8LYiucOuFKYOy8odUWoBqLYM",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljNDFhZTdlMDAwMjNiY2YwMzQ4MDY5OTY4EgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLsHRkvf7KGOO3Y74kWHm0QOIhB1kOVAVK0-fcScdK6w0vBxURlOqeg9kDs8Q6eV8jHMdIlEUlMhygu9LziD9iunpzUfQUfSNU0UB1oXF6GezX-SzjugoVHVyiEiZ_KiGiLL2abCU-2cWlK2J8OHYWUMLBYpRvkHnx6VFYUZk_fnLsHRJrsW7TnBMrG-ziP4fBiYhB6woVgjCTR4uS899ELWhvSGz6AIDqm8LYiucOuFKYOy8odUWoBqLYM=s0"
+                    },
+                    {
+                        "order":  13,
+                        "title":  "Knowledge Base — AtlasVault AI (Spatial)",
+                        "id":  "c2ef8904d92d42dcb323fff8496c0c9c",
+                        "width":  2560,
+                        "height":  2048,
+                        "image":  "images/13-knowledge-base-spatial.png",
+                        "code":  "code/13-knowledge-base-spatial.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLsiFgi51xhXpgjOaWAUGgPVlxXkFmyGPavfS3KBnb9bTSQPaob_yruvJsCnehvpuFNE3B3_bzQJlpCUKtr5ChU4sA_J18i_wvJi6bsDW9xpvrgfP1QTHW2_pmRo6E59b2x2gdIeZsuUSf1n7ottdLeqnACm9RKu9JxF2s6O_3JzhWG0ANU4egRJQWjIseQZw10x02HgAMZhR-mCeAHF_A81ygYQAfQOroU7B4-4mW6BCs8CG9fqduMyMQI",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljNmJiMTVkNmYwNGE0NTIxNDQyM2MzOTJlEgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLsiFgi51xhXpgjOaWAUGgPVlxXkFmyGPavfS3KBnb9bTSQPaob_yruvJsCnehvpuFNE3B3_bzQJlpCUKtr5ChU4sA_J18i_wvJi6bsDW9xpvrgfP1QTHW2_pmRo6E59b2x2gdIeZsuUSf1n7ottdLeqnACm9RKu9JxF2s6O_3JzhWG0ANU4egRJQWjIseQZw10x02HgAMZhR-mCeAHF_A81ygYQAfQOroU7B4-4mW6BCs8CG9fqduMyMQI=s0"
+                    },
+                    {
+                        "order":  14,
+                        "title":  "Platform Admin — AtlasVault AI (Spatial)",
+                        "id":  "dadf6d86ad614818a1471d2f2d4a1f27",
+                        "width":  2560,
+                        "height":  2048,
+                        "image":  "images/14-platform-admin-spatial.png",
+                        "code":  "code/14-platform-admin-spatial.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLsjSlwRO9n8_YFN6xh4ipXZ3rMy9zCyciEPQrBy4jm-0TNE2imm7652CGq4lW9nYUEgPgqCayw7Jns9jqe5ZdyvcOYLnHCKw7QITE50iVPOmMJARog6aINJATqd1Kpqwm1QPfKsGcP_nOvxpU61PM8waCoLO-EzjVHep8dEJ2aEpe22TAL9S78z5P9l0ZTR28NPtM3JIKWQqS4ip8j5RF9nt8s6rnwSNxgsXr3aK5cjnl21PL-QruBlyS0",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljODhkNzlkMjAwMjNiZDhhMDZiMTlhMzVlEgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLsjSlwRO9n8_YFN6xh4ipXZ3rMy9zCyciEPQrBy4jm-0TNE2imm7652CGq4lW9nYUEgPgqCayw7Jns9jqe5ZdyvcOYLnHCKw7QITE50iVPOmMJARog6aINJATqd1Kpqwm1QPfKsGcP_nOvxpU61PM8waCoLO-EzjVHep8dEJ2aEpe22TAL9S78z5P9l0ZTR28NPtM3JIKWQqS4ip8j5RF9nt8s6rnwSNxgsXr3aK5cjnl21PL-QruBlyS0=s0"
+                    },
+                    {
+                        "order":  15,
+                        "title":  "Analytics — AtlasVault AI (Spatial)",
+                        "id":  "e8168a95cac249f9b4db5629b9570bdc",
+                        "width":  2560,
+                        "height":  2166,
+                        "image":  "images/15-analytics-spatial.png",
+                        "code":  "code/15-analytics-spatial.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLtZKJ29Q4-sl81k0Bofhsl-JIqVZN-a_nRhnV6Dehcqnyj4169VmuP-jSgBU8-B9UpjzsdIO4ooKyYxSIasGuvmqj2q5AFwP5kvJeB9RDplThbZVI6U0Ib6Va4O9WqIZVySnUAqw64OJDyO4bSjKLOo7cgPDOMPyVltGGl1DtjBRszbCtTCnG1sr_dmqyKBU6te7XWMPRf70Ue9PC4tXke5NOPMfqlXdhCgw6QLYo7k-V57nbMuwZT7u0s",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljNmNhMGFiMzQwNDc5ZjFmOGJmMDViMGQxEgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLtZKJ29Q4-sl81k0Bofhsl-JIqVZN-a_nRhnV6Dehcqnyj4169VmuP-jSgBU8-B9UpjzsdIO4ooKyYxSIasGuvmqj2q5AFwP5kvJeB9RDplThbZVI6U0Ib6Va4O9WqIZVySnUAqw64OJDyO4bSjKLOo7cgPDOMPyVltGGl1DtjBRszbCtTCnG1sr_dmqyKBU6te7XWMPRf70Ue9PC4tXke5NOPMfqlXdhCgw6QLYo7k-V57nbMuwZT7u0s=s0"
+                    },
+                    {
+                        "order":  16,
+                        "title":  "Evidence Library — AtlasVault AI (Refined Background)",
+                        "id":  "8ce05c1e71b74e22acd271142464c47c",
+                        "width":  2560,
+                        "height":  2160,
+                        "image":  "images/16-evidence-library-refined-background.png",
+                        "code":  "code/16-evidence-library-refined-background.html",
+                        "screenshotUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLsuv5Ly-brL6oJXW38Kx0dTCK_KpYgDbVFavkgNf60Crn59q5n3sd_OcRykyypC56xe7MAmtVheEWXEXRGqkE0ieqxjFtr3J4vm2rDVWiq34zrYNfSKbFHGHL-YkWYT-gqNicgcr9_7goErUW02MWTGKKZQVsDIDxpWwrTZ-Gep_tAZSbtWEDqcBNUxGRmKAxhCp4CnIW4tYmBf__4iiVP7bjW3_YNxW8JhpxFeRH_XmE7LpzUUrQaF3jg",
+                        "htmlUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NTljOTkyNDAyNTIwNDc5Yzk0N2Q2MmFhMzBjEgsSBxDBsPCmhg0YAZIBIwoKcHJvamVjdF9pZBIVQhMxMDI3MDg2NDczODE1NjgzODYz\u0026filename=\u0026opi=89354086",
+                        "screenshotFullResUrl":  "https://lh3.googleusercontent.com/aida/AP1WRLsuv5Ly-brL6oJXW38Kx0dTCK_KpYgDbVFavkgNf60Crn59q5n3sd_OcRykyypC56xe7MAmtVheEWXEXRGqkE0ieqxjFtr3J4vm2rDVWiq34zrYNfSKbFHGHL-YkWYT-gqNicgcr9_7goErUW02MWTGKKZQVsDIDxpWwrTZ-Gep_tAZSbtWEDqcBNUxGRmKAxhCp4CnIW4tYmBf__4iiVP7bjW3_YNxW8JhpxFeRH_XmE7LpzUUrQaF3jg=s0"
+                    }
+                ],
+    "designSystems":  [
+                          {
+                              "order":  11,
+                              "title":  "Design System",
+                              "id":  "asset-stub-assets_30f7bea337e44bf7b519580df0ad83c6",
+                              "sourceAsset":  "assets/30f7bea337e44bf7b519580df0ad83c6",
+                              "note":  "Stitch exposes this as a design system asset instance, not as a screen with screenshot/html file entries."
+                          },
+                          {
+                              "order":  12,
+                              "title":  "Design System",
+                              "id":  "asset-stub-assets_e307d13329a54e0988c48a9ba97a241f",
+                              "sourceAsset":  "assets/e307d13329a54e0988c48a9ba97a241f",
+                              "note":  "Stitch exposes this as a design system asset instance, not as a screen with screenshot/html file entries."
+                          }
+                      ],
+    "theme":  {
+                  "font":  "Inter",
+                  "colorMode":  "LIGHT",
+                  "primary":  "#007aff",
+                  "secondary":  "#5856d6",
+                  "neutral":  "#8e8e93",
+                  "background":  "#faf9fe",
+                  "surface":  "#faf9fe",
+                  "onSurface":  "#1a1b1f",
+                  "radii":  {
+                                "sm":  "0.25rem",
+                                "default":  "0.5rem",
+                                "md":  "0.75rem",
+                                "lg":  "1rem",
+                                "xl":  "1.5rem",
+                                "full":  "9999px"
+                            },
+                  "spacing":  {
+                                  "unit":  "4px",
+                                  "xs":  "4px",
+                                  "sm":  "8px",
+                                  "md":  "16px",
+                                  "lg":  "24px",
+                                  "xl":  "32px",
+                                  "xxl":  "64px",
+                                  "containerMax":  "1200px",
+                                  "gutter":  "20px"
+                              }
+              }
+}

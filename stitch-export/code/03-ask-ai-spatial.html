@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AtlasVault AI - Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600&amp;family=Plus+Jakarta+Sans:wght@400;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#2a2a2c",
+                        "surface-variant": "#353437",
+                        "on-secondary-container": "#f2f3ff",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#1c1b1c",
+                        "surface-container": "#201f21",
+                        "primary-fixed": "#9cf0ff",
+                        "on-secondary": "#002d6e",
+                        "primary-container": "#00e5ff",
+                        "on-secondary-fixed-variant": "#00429b",
+                        "inverse-primary": "#006875",
+                        "inverse-surface": "#e5e1e4",
+                        "outline-variant": "#3b494c",
+                        "on-surface": "#e5e1e4",
+                        "tertiary": "#f0eced",
+                        "tertiary-container": "#d3d0d1",
+                        "surface": "#131315",
+                        "on-primary": "#00363d",
+                        "surface-container-low": "#1b1b1d",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#313031",
+                        "background": "#131315",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#474647",
+                        "tertiary-fixed-dim": "#c8c6c7",
+                        "surface-tint": "#00daf3",
+                        "on-primary-fixed": "#001f24",
+                        "on-tertiary-container": "#5a595a",
+                        "on-primary-fixed-variant": "#004f58",
+                        "tertiary-fixed": "#e5e2e3",
+                        "surface-container-lowest": "#0e0e10",
+                        "inverse-on-surface": "#303032",
+                        "surface-bright": "#39393b",
+                        "primary-fixed-dim": "#00daf3",
+                        "outline": "#849396",
+                        "surface-container-highest": "#353437",
+                        "primary": "#c3f5ff",
+                        "surface-dim": "#131315",
+                        "secondary-fixed": "#d9e2ff",
+                        "secondary-container": "#0068ed",
+                        "on-secondary-fixed": "#001945",
+                        "secondary-fixed-dim": "#b0c6ff",
+                        "on-primary-container": "#00626e",
+                        "on-surface-variant": "#bac9cc",
+                        "secondary": "#b0c6ff",
+                        "on-background": "#e5e1e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "spatial-gap": "32px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "container-max": "1440px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Outfit"],
+                        "label-md": ["Outfit"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background-color: rgba(32, 31, 33, 0.6);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ai-response {
+            box-shadow: 0 0 40px rgba(5, 5, 5, 0.4), 0 0 15px rgba(0, 229, 255, 0.05);
+        }
+        .glowing-indicator {
+            filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.8));
+        }
+        .ambient-bg {
+            background: radial-gradient(circle at 50% -20%, rgba(0, 229, 255, 0.15) 0%, transparent 60%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen relative overflow-hidden flex flex-col font-body-md ambient-bg">
+<!-- Top Navigation (Desktop) -->
+<header class="hidden md:flex fixed top-spatial-gap left-1/2 -translate-x-1/2 w-[95%] rounded-full h-16 bg-surface-container/60 backdrop-blur-xl border border-white/10 shadow-[0_40px_40px_rgba(5,5,5,0.4)] shadow-xl justify-between items-center px-margin-desktop z-50">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-extrabold tracking-tighter text-on-surface">AtlasVault AI</span>
+</div>
+<nav class="flex gap-gutter">
+<a class="text-primary-container font-bold border-b-2 border-primary-container pb-1 text-label-lg font-label-lg" href="#">Ask AI</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors hover:shadow-glow-sm duration-500 text-label-lg font-label-lg" href="#">Network</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors hover:shadow-glow-sm duration-500 text-label-lg font-label-lg" href="#">History</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors hover:shadow-glow-sm duration-500 text-label-lg font-label-lg" href="#">Team</a>
+</nav>
+<div class="flex items-center gap-unit">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full mr-4">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-full font-label-lg text-label-lg hover:bg-primary transition-colors">
+                New Analysis
+            </button>
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden ml-4">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A highly detailed close-up portrait of a professional individual in a futuristic corporate setting. Subtle cool blue lighting accents their features. Cinematic depth of field, sharp focus, cyberpunk undertones. 8k resolution, photorealistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxdyjmEQIbqUO2hqClGvQqefaj-HBaAoUANDzt5AORUD90HIPJnhfXdYbMwsV0FKIusQ97jsnxpXHAG-ROBqMdh9gqzz6NvP3hX0RY7r9b1aNpv9PgO2e_R3Vl3XyAuXFrBjX_ldN7cquy_bs9UHTCIqU206p_hEqP4bdNnr0gj4PCQAOPZCHsBnh-6wPDmQsMn8lDWAhhxfqvyVUyy4YIbn6JrCCZHT_EIkqPlThoNf9sNxzAKc41"/>
+</div>
+</div>
+</header>
+<!-- Main Chat Area -->
+<main class="flex-grow flex flex-col items-center justify-start pt-32 pb-40 px-margin-mobile md:px-0 overflow-y-auto w-full max-w-3xl mx-auto relative z-10">
+<div class="w-full flex flex-col gap-8">
+<!-- User Message -->
+<div class="flex justify-end w-full">
+<div class="bg-secondary-container text-on-secondary-container rounded-2xl rounded-tr-sm py-4 px-6 max-w-[85%] shadow-lg">
+<p class="font-body-md text-body-md">Analyze the Q3 financial reports for TechCorp and highlight any anomalies in R&amp;D spending compared to historical data.</p>
+</div>
+</div>
+<!-- AI Response -->
+<div class="flex justify-start w-full">
+<div class="glass-panel ai-response rounded-3xl rounded-tl-sm p-6 max-w-[95%] w-full flex flex-col gap-4 relative">
+<div class="absolute top-4 left-4 w-2 h-2 bg-primary-container rounded-full glowing-indicator"></div>
+<div class="pl-4 border-l-2 border-primary-container/30">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">TechCorp Q3 R&amp;D Spending Analysis</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+                             Based on the ingested documents, TechCorp's Q3 R&amp;D expenditure reached <strong class="text-primary-container">$4.2B</strong>, representing a <strong class="text-primary-container">14% increase</strong> quarter-over-quarter.
+                         </p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+                            This deviation is statistically significant when compared to their historical average Q3 growth of 4-6%. The primary driver appears to be the accelerated development of their 'Project Nova' AI infrastructure.
+                         </p>
+<!-- Citations -->
+<div class="flex flex-wrap gap-2 mt-4">
+<div class="bg-surface-variant/50 border border-white/5 rounded-full px-3 py-1 flex items-center gap-2 cursor-pointer hover:bg-surface-variant/80 transition-colors">
+<span class="material-symbols-outlined text-sm text-primary-container" data-icon="description">description</span>
+<span class="font-label-md text-label-md text-on-surface">TechCorp_Q3_Earnings_Call.pdf</span>
+</div>
+<div class="bg-surface-variant/50 border border-white/5 rounded-full px-3 py-1 flex items-center gap-2 cursor-pointer hover:bg-surface-variant/80 transition-colors">
+<span class="material-symbols-outlined text-sm text-primary-container" data-icon="bar_chart">bar_chart</span>
+<span class="font-label-md text-label-md text-on-surface">Historical_Financials_2020_2023.xlsx</span>
+</div>
+</div>
+</div>
+<!-- Footer Actions & Confidence -->
+<div class="flex justify-between items-center mt-4 pt-4 border-t border-white/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-sm" data-icon="check_circle">check_circle</span>
+<span class="font-label-md text-label-md text-on-surface-variant">High Confidence: 94%</span>
+</div>
+<div class="flex gap-2">
+<button class="text-on-surface-variant hover:text-primary-container transition-colors p-1 rounded-full">
+<span class="material-symbols-outlined" data-icon="content_copy">content_copy</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary-container transition-colors p-1 rounded-full">
+<span class="material-symbols-outlined" data-icon="thumb_up">thumb_up</span>
+</button>
+<button class="text-on-surface-variant hover:text-error transition-colors p-1 rounded-full">
+<span class="material-symbols-outlined" data-icon="thumb_down">thumb_down</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- User Message 2 -->
+<div class="flex justify-end w-full">
+<div class="bg-secondary-container text-on-secondary-container rounded-2xl rounded-tr-sm py-4 px-6 max-w-[85%] shadow-lg">
+<p class="font-body-md text-body-md">Can you break down the 'Project Nova' spending specifically?</p>
+</div>
+</div>
+<!-- AI Loading State -->
+<div class="flex justify-start w-full opacity-70">
+<div class="glass-panel rounded-3xl rounded-tl-sm p-4 w-24 flex justify-center items-center gap-2 relative">
+<div class="w-2 h-2 bg-primary-container rounded-full animate-bounce"></div>
+<div class="w-2 h-2 bg-primary-container rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
+<div class="w-2 h-2 bg-primary-container rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Input Bar -->
+<div class="fixed bottom-spatial-gap left-1/2 -translate-x-1/2 w-[90%] max-w-3xl z-50">
+<div class="bg-surface-container-high rounded-full p-2 flex items-center shadow-2xl shadow-surface-container-lowest border border-white/10">
+<button class="p-3 text-on-surface-variant hover:text-primary-container transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="attach_file">attach_file</span>
+</button>
+<input class="flex-grow bg-transparent border-none text-on-surface placeholder-on-surface-variant focus:ring-0 font-body-md text-body-md px-4" placeholder="Ask AtlasVault AI..." type="text"/>
+<button class="p-3 text-on-surface-variant hover:text-primary-container transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+<button class="bg-primary-container text-on-primary-container p-3 rounded-full hover:bg-primary transition-colors ml-2 shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</body></html>

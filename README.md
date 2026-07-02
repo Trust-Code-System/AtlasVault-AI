@@ -11,7 +11,7 @@ missing-document checklists — with a source citation behind every claim.
 
 ```bash
 npm install
-npm run setup     # creates the SQLite database and seeds the demo workspace
+npm run setup     # pushes the Prisma schema to Postgres and seeds the demo workspace
 npm run dev       # http://localhost:3000
 ```
 
@@ -29,8 +29,10 @@ Other seeded users (same password): `adaeze@trustcode.ng` (Admin/reviewer),
   extractive — summaries, classification, requirement extraction, evidence
   matching and answers are assembled verbatim from your documents. Honest by
   construction; great for offline demos.
-- **Claude mode:** set `ANTHROPIC_API_KEY` in `.env` (model via
-  `ATLASVAULT_MODEL`, default `claude-sonnet-5`) and restart. Generation
+- **Provider mode:** set `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` in `.env`.
+  `AI_PROVIDER=auto` prefers OpenAI, then Anthropic. Defaults are
+  `OPENAI_MODEL=gpt-5.5` and `ANTHROPIC_MODEL=claude-sonnet-5`, with
+  `ANTHROPIC_OPUS_MODEL=claude-opus-4-7` documented as the Opus alternate. Generation
   becomes fully synthetic but stays grounded: prompts require inline citations
   to retrieved excerpts and an explicit "insufficient evidence" signal instead
   of invention.
@@ -47,7 +49,7 @@ Other seeded users (same password): `adaeze@trustcode.ng` (Admin/reviewer),
 
 ## Architecture
 
-Next.js 15 (App Router, TS) · Tailwind · Prisma (SQLite dev / Postgres-ready)
+Next.js 15 (App Router, TS) · Tailwind · Prisma + PostgreSQL
 · JWT sessions · pdf-parse + mammoth extraction · Anthropic SDK task layer
 with deterministic fallback · `docx` export. See [PLAN.md](PLAN.md) for the
 full implementation plan, schema, page map, API surface and V2/V3 roadmap.
@@ -74,3 +76,31 @@ sensitive-data warnings at export · rate limiting on auth/ask/upload/generate
 · branded error pages with support reference IDs; sanitized error logs (no
 document content, prompts or outputs) · full audit log of uploads,
 generations, approvals, exports and permission changes.
+
+## Supabase + Vercel setup
+
+This app uses Supabase as infrastructure only: Postgres for Prisma and Storage
+for uploaded documents. Auth remains the app's custom JWT/bcrypt flow.
+
+Create a Supabase Storage bucket named `documents`, then set these variables in
+Vercel for both Production and Preview:
+
+- `DATABASE_URL` - Supabase Postgres connection string for Prisma.
+- `DIRECT_URL` - Supabase direct Postgres connection string for Prisma schema pushes.
+- `AUTH_SECRET` - a long random session signing secret.
+- `SUPABASE_URL` - your Supabase project URL.
+- `SUPABASE_SERVICE_ROLE_KEY` - server-only key used by API routes to upload files.
+- `SUPABASE_STORAGE_BUCKET` - usually `documents`.
+- `AI_PROVIDER` - optional, `auto`, `openai`, or `anthropic`.
+- `OPENAI_API_KEY` - optional, enables OpenAI generation.
+- `OPENAI_MODEL` - optional, defaults to `gpt-5.5`.
+- `ANTHROPIC_API_KEY` - optional, enables Claude generation.
+- `ANTHROPIC_MODEL` - optional, defaults to `claude-sonnet-5`.
+- `ANTHROPIC_OPUS_MODEL` - optional, alternate Claude Opus setting `claude-opus-4-7`.
+
+After setting `DATABASE_URL`, initialize the database:
+
+```bash
+npm run db:push
+npm run db:seed
+```

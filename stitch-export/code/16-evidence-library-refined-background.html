@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AtlasVault AI - Evidence Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#313031",
+                      "surface-tint": "#00daf3",
+                      "surface-container-lowest": "#0e0e10",
+                      "on-secondary": "#002d6e",
+                      "on-secondary-fixed": "#001945",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#474647",
+                      "background": "#131315",
+                      "inverse-on-surface": "#303032",
+                      "on-primary-fixed": "#001f24",
+                      "inverse-primary": "#006875",
+                      "error": "#ffb4ab",
+                      "outline-variant": "#3b494c",
+                      "on-background": "#e5e1e4",
+                      "tertiary-fixed-dim": "#c8c6c7",
+                      "secondary-fixed-dim": "#b0c6ff",
+                      "on-error": "#690005",
+                      "surface-dim": "#131315",
+                      "surface-container-low": "#1b1b1d",
+                      "surface-container": "#201f21",
+                      "on-primary-fixed-variant": "#004f58",
+                      "surface-container-high": "#2a2a2c",
+                      "surface-bright": "#39393b",
+                      "on-surface": "#e5e1e4",
+                      "surface": "#131315",
+                      "on-secondary-fixed-variant": "#00429b",
+                      "primary-fixed-dim": "#00daf3",
+                      "on-secondary-container": "#f2f3ff",
+                      "tertiary": "#f0eced",
+                      "secondary": "#b0c6ff",
+                      "on-tertiary-container": "#5a595a",
+                      "error-container": "#93000a",
+                      "surface-variant": "#353437",
+                      "secondary-container": "#0068ed",
+                      "inverse-surface": "#e5e1e4",
+                      "secondary-fixed": "#d9e2ff",
+                      "primary": "#c3f5ff",
+                      "on-primary-container": "#00626e",
+                      "on-tertiary-fixed": "#1c1b1c",
+                      "tertiary-container": "#d3d0d1",
+                      "outline": "#849396",
+                      "tertiary-fixed": "#e5e2e3",
+                      "primary-fixed": "#9cf0ff",
+                      "on-primary": "#00363d",
+                      "surface-container-highest": "#353437",
+                      "primary-container": "#00e5ff",
+                      "on-surface-variant": "#bac9cc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "margin-desktop": "40px",
+                      "spatial-gap": "32px",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "label-lg": [
+                              "Outfit"
+                      ],
+                      "headline-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-xl": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-md": [
+                              "Outfit"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "label-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.03em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.03em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>body {
+    background-color: theme("colors.background");
+    color: theme("colors.on-surface");
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative
+    }
+/* Environmental Background (Level 0) */
+.obsidian-env {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-color: #0a0a0f;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(0, 180, 216, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, #131315 0%, #08080a 100%);
+    }
+.obsidian-env::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+    opacity: 0.6;
+    }
+.obsidian-env::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% -20%, rgba(0, 180, 216, 0.08) 0%, transparent 40%);
+    }
+/* Glassmorphism Classes */
+.glass-panel {
+    background-color: rgba(32, 31, 33, 0.6);
+    /* surface-container */
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 40px 80px -20px rgba(5, 5, 5, 0.4)
+    }
+.glass-floating {
+    background-color: rgba(32, 31, 33, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 40px rgba(0, 218, 243, 0.05), 0 20px 40px -10px rgba(5, 5, 5, 0.6)
+    }
+.glass-card {
+    background-color: rgba(32, 31, 33, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease
+    }
+.glass-card:hover {
+    background-color: rgba(32, 31, 33, 0.7);
+    border-color: rgba(0, 218, 243, 0.3);
+    box-shadow: 0 0 20px rgba(0, 218, 243, 0.1);
+    transform: translatey(-4px)
+    }
+/* Tonal Layers */
+.tonal-layer {
+    background-color: rgba(19, 19, 21, 0.4);
+    /* surface-dim */
+    }
+/* Glow Effects */
+.glow-active {
+    box-shadow: inset 0 0 20px rgba(0, 218, 243, 0.2)
+    }
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: theme("colors.surface-tint");
+    box-shadow: 0 0 10px theme("colors.surface-tint")
+    }
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px
+    }
+::-webkit-scrollbar-track {
+    background: transparent
+    }
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px
+    }</style>
+</head>
+<body class="antialiased selection:bg-surface-tint selection:text-background">
+<!-- Environmental Background -->
+<div class="obsidian-env" data-alt="A deep, dark obsidian spatial computing environment. Subtle, hazy volumetric lighting suggests a vast, infinite digital space. Extremely faint, abstract geometric lines gently grid the void, creating a sense of scale and depth without distracting from the foreground UI. The overall mood is mysterious, high-tech, and calm, utilizing a palette of deep blacks and very dark grays with almost imperceptible hints of deep blue."></div>
+<!-- TopNavBar (Hidden on Mobile) -->
+<nav class="hidden md:flex justify-between items-center w-full max-w-container-max mx-auto fixed top-4 left-40 right-40 rounded-full px-6 py-2 border border-white/5 shadow-lg bg-surface-container/40 backdrop-blur-md z-50">
+<div class="flex items-center gap-4">
+<span class="font-headline-sm text-headline-sm font-black text-on-surface">AtlasVault AI</span>
+</div>
+<div class="flex items-center gap-spatial-gap">
+<a class="text-on-surface-variant hover:text-surface-tint transition-colors font-label-md text-label-md py-1" href="#">Overview</a>
+<a class="text-surface-tint border-b-2 border-surface-tint pb-1 font-label-md text-label-md py-1 opacity-80" href="#">Recent</a>
+<a class="text-on-surface-variant hover:text-surface-tint transition-colors font-label-md text-label-md py-1" href="#">Starred</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-surface-tint transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-surface-tint transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<button class="bg-surface-tint text-background px-4 py-2 rounded-full font-label-md text-label-md font-bold hover:shadow-[0_0_15px_rgba(0,218,243,0.4)] transition-all">
+                New Analysis
+            </button>
+</div>
+</nav>
+<!-- SideNavBar (Visible on Desktop) -->
+<aside class="hidden md:flex flex-col items-center gap-spatial-gap bg-surface/60 backdrop-blur-2xl border border-white/10 shadow-[0_0_40px_rgba(0,218,243,0.05)] fixed left-8 top-1/2 -translate-y-1/2 w-20 rounded-full py-8 z-40">
+<!-- Tabs -->
+<div class="flex flex-col gap-4 w-full px-2">
+<a class="flex justify-center items-center text-on-surface-variant hover:text-surface-tint transition-all duration-300 p-3 hover:bg-white/5 rounded-full" href="#" title="Dashboard">
+<span class="material-symbols-outlined">dashboard</span>
+</a>
+<a class="flex justify-center items-center bg-primary-container/30 text-surface-tint rounded-full p-3 shadow-[0_0_15px_rgba(0,218,243,0.3)] scale-110 transition-transform duration-200" href="#" title="Documents">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+</a>
+<a class="flex justify-center items-center text-on-surface-variant hover:text-surface-tint transition-all duration-300 p-3 hover:bg-white/5 rounded-full" href="#" title="Analysis">
+<span class="material-symbols-outlined">analytics</span>
+</a>
+<a class="flex justify-center items-center text-on-surface-variant hover:text-surface-tint transition-all duration-300 p-3 hover:bg-white/5 rounded-full" href="#" title="Proposals">
+<span class="material-symbols-outlined">edit_note</span>
+</a>
+<a class="flex justify-center items-center text-on-surface-variant hover:text-surface-tint transition-all duration-300 p-3 hover:bg-white/5 rounded-full" href="#" title="Vault">
+<span class="material-symbols-outlined">inventory_2</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-4 w-full px-2 pt-8 border-t border-white/10">
+<a class="flex justify-center items-center text-on-surface-variant hover:text-surface-tint transition-all duration-300 p-3 hover:bg-white/5 rounded-full" href="#" title="Settings">
+<span class="material-symbols-outlined">settings</span>
+</a>
+<a class="flex justify-center items-center text-on-surface-variant hover:text-surface-tint transition-all duration-300 p-3 hover:bg-white/5 rounded-full" href="#" title="Support">
+<span class="material-symbols-outlined">help</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-24 md:pt-32 pb-24 md:pl-36 px-4 md:pr-12 w-full max-w-[1600px] mx-auto min-h-screen flex flex-col">
+<!-- Header -->
+<header class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-2 tracking-tight">Evidence Library</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Browse, verify, and organize intelligence artifacts extracted from your spatial environment.</p>
+</div>
+<!-- Controls -->
+<div class="flex items-center gap-4 glass-panel rounded-full p-2 pl-4">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none text-on-surface placeholder:text-on-surface-variant focus:ring-0 w-48 font-body-md text-body-md" placeholder="Search evidence..." type="text"/>
+<div class="w-px h-6 bg-white/10 mx-2"></div>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-surface-tint transition-colors px-3 py-1">
+<span class="material-symbols-outlined">filter_list</span>
+<span class="font-label-md text-label-md">Filter</span>
+</button>
+</div>
+</header>
+<!-- 2-Column Grid for Evidence Cards -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-gutter flex-grow">
+<!-- Card 1 -->
+<article class="glass-card rounded-2xl p-6 flex flex-col gap-4 relative overflow-hidden group">
+<!-- Decorative blurred glow -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-surface-tint/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<header class="flex justify-between items-start z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-surface-tint">description</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Q3 Market Analysis Synthesis</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Extracted • 2 hours ago</p>
+</div>
+</div>
+<!-- Strength Badge -->
+<div class="flex items-center gap-2 bg-primary-container/10 border border-primary-container/30 px-3 py-1 rounded-full">
+<div class="status-dot"></div>
+<span class="font-label-md text-label-md text-surface-tint uppercase tracking-wider">High Confidence</span>
+</div>
+</header>
+<div class="tonal-layer rounded-xl p-4 flex-grow z-10 border border-white/5">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        "The primary driver for accelerated adoption in the EMEA region was identified as the recent regulatory shift in data sovereignty requirements. Competitor X failed to adapt infrastructure, leading to a 15% market share bleed..."
+                    </p>
+</div>
+<footer class="flex items-center justify-between pt-2 border-t border-white/5 z-10">
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-1 text-on-surface-variant hover:text-surface-tint transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[16px]">link</span>
+                            Source Doc
+                        </a>
+<a class="flex items-center gap-1 text-on-surface-variant hover:text-surface-tint transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[16px]">history</span>
+                            Lineage
+                        </a>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-surface-tint/10 hover:text-surface-tint transition-colors">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-surface-tint text-background flex items-center justify-center hover:shadow-[0_0_10px_rgba(0,218,243,0.5)] transition-all">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+</div>
+</footer>
+</article>
+<!-- Card 2 -->
+<article class="glass-card rounded-2xl p-6 flex flex-col gap-4 relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-surface-tint/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<header class="flex justify-between items-start z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-surface-tint">chat_bubble</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Client Feedback: Security Audit</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Transcribed • Yesterday</p>
+</div>
+</div>
+<!-- Strength Badge -->
+<div class="flex items-center gap-2 bg-surface-variant/50 border border-white/10 px-3 py-1 rounded-full">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></div>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Moderate</span>
+</div>
+</header>
+<div class="tonal-layer rounded-xl p-4 flex-grow z-10 border border-white/5">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        "While the spatial UI is impressive, the CTO expressed concerns regarding the latency of the encryption handshake during cross-region data transfers. We need to validate the benchmark metrics before the next sprint."
+                    </p>
+</div>
+<footer class="flex items-center justify-between pt-2 border-t border-white/5 z-10">
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-1 text-on-surface-variant hover:text-surface-tint transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[16px]">link</span>
+                            Meeting Transcript
+                        </a>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-surface-tint/10 hover:text-surface-tint transition-colors">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-surface-tint text-background flex items-center justify-center hover:shadow-[0_0_10px_rgba(0,218,243,0.5)] transition-all">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+</div>
+</footer>
+</article>
+<!-- Card 3 -->
+<article class="glass-card rounded-2xl p-6 flex flex-col gap-4 relative overflow-hidden group">
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-surface-tint/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<header class="flex justify-between items-start z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-surface-tint">bar_chart</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Q4 Financial Projections Model</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Computed • 3 days ago</p>
+</div>
+</div>
+<!-- Strength Badge -->
+<div class="flex items-center gap-2 bg-primary-container/10 border border-primary-container/30 px-3 py-1 rounded-full">
+<div class="status-dot"></div>
+<span class="font-label-md text-label-md text-surface-tint uppercase tracking-wider">High Confidence</span>
+</div>
+</header>
+<div class="tonal-layer rounded-xl p-4 flex-grow z-10 border border-white/5">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        Data vectors indicate a strong probability (87%) of exceeding Q4 revenue targets by $1.2M, assuming the enterprise tier launch proceeds without delay. Cost of acquisition is trending downward.
+                    </p>
+</div>
+<footer class="flex items-center justify-between pt-2 border-t border-white/5 z-10">
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-1 text-on-surface-variant hover:text-surface-tint transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[16px]">link</span>
+                            Data Source
+                        </a>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-surface-tint/10 hover:text-surface-tint transition-colors">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-surface-tint text-background flex items-center justify-center hover:shadow-[0_0_10px_rgba(0,218,243,0.5)] transition-all">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+</div>
+</footer>
+</article>
+</div>
+</main>
+</body></html>

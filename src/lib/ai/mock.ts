@@ -102,7 +102,7 @@ export function mockAnswer(question: string, chunks: ScoredChunk[]): QaResult {
   return {
     answer:
       `Based on your uploaded documents, here is the most relevant evidence:\n\n${parts.join("\n\n")}\n\n` +
-      `*Local Knowledge Mode returns verbatim evidence. Add an Anthropic API key in Settings to enable synthesized answers.*`,
+      `*Local Knowledge Mode returns verbatim evidence. Add an OpenAI or Anthropic API key in Settings to enable synthesized answers.*`,
     confidence: top[0].score > 3 ? "HIGH" : "MEDIUM",
     insufficient: false,
     citations: top.map((c) => ({ chunkId: c.chunkId, documentId: c.documentId, snippet: excerpt(c.content, question, 180) })),

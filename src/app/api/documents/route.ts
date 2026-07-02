@@ -1,6 +1,4 @@
 import { NextResponse } from "next/server";
-import { mkdir, writeFile } from "fs/promises";
-import path from "path";
 import { db } from "@/lib/db";
 import { requireApiRole } from "@/lib/api-auth";
 import { extractText, isSupported } from "@/lib/extract";
@@ -10,6 +8,7 @@ import { logAudit, logUsage } from "@/lib/audit";
 import { aiModelLabel } from "@/lib/ai/client";
 import { withApi } from "@/lib/errors";
 import { rateLimit, LIMITS } from "@/lib/ratelimit";
+import { saveWorkspaceFile } from "@/lib/storage";
 
 const MAX_SIZE = 20 * 1024 * 1024; // 20 MB
 
@@ -29,12 +28,12 @@ export const POST = withApi(async (req: Request) => {
 
   const buffer = Buffer.from(await file.arrayBuffer());
 
-  // preserve the original file
-  const dir = path.join(process.cwd(), "uploads", session.workspaceId);
-  await mkdir(dir, { recursive: true });
-  const safeName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
-  const filePath = path.join(dir, safeName);
-  await writeFile(filePath, buffer);
+  const filePath = await saveWorkspaceFile({
+    workspaceId: session.workspaceId,
+    fileName: file.name,
+    mimeType: file.type,
+    buffer,
+  });
 
   const doc = await db.document.create({
     data: {
@@ -42,7 +41,7 @@ export const POST = withApi(async (req: Request) => {
       uploaderId: session.userId,
       title: file.name.replace(/\.[a-z0-9]+$/i, "").replace(/[_-]+/g, " "),
       fileName: file.name,
-      filePath: path.join("uploads", session.workspaceId, safeName),
+      filePath,
       mimeType: file.type || "application/octet-stream",
       sizeBytes: file.size,
       status: "PROCESSING",
